@@ -38,7 +38,7 @@
             label1.Font = new Font("Sans Serif Collection", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(181, 74);
+            label1.Size = new Size(140, 102);
             label1.TabIndex = 1;
             label1.Text = "Voting";
             // 

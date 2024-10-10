@@ -1,3 +1,4 @@
+
 using JomaVote;
 
 namespace JomaVoting
@@ -14,10 +15,10 @@ namespace JomaVoting
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Homari homari = new Homari();
+            Form1 formari = new Form1();
 
 
-            Application.Run(homari);
+            Application.Run(formari);
         }
     }
 }
