@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JomaVoting
-build_property.ProjectDir = C:\Users\user\Documents\Ysahmuel\BSIT301C 3y1term 2024-2025\[1] Files from classmates\VotingSystem-main\VotingSystem-main\JomaVoting\JomaVoting\
+build_property.ProjectDir = C:\Users\user\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

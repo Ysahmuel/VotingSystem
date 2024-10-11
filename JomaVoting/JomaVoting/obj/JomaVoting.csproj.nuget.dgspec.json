@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
         "projectName": "JomaVoting",
-        "projectPath": "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4XbvfYUtHAY=",
+  "dgSpecHash": "UMbyMbQszMw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\Ysahmuel\\BSIT301C 3y1term 2024-2025\\[1] Files from classmates\\VotingSystem-main\\VotingSystem-main\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.9\\microsoft.netcore.platforms.3.1.9.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
