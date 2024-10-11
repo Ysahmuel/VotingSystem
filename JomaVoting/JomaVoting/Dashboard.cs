@@ -83,5 +83,9 @@ namespace JomaVoting
             myPlot.SavePng("demo.png", 400, 300); // Save the plot image
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

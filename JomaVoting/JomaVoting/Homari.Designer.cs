@@ -166,7 +166,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Homari";
-            Text = "JomaVote";
+            Text = "JomaVote - User";
             Load += Homari_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

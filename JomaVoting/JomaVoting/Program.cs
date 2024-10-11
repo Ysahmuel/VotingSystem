@@ -15,7 +15,7 @@ namespace JomaVoting
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Form1 formari = new Form1();
+            AdminHomari formari = new AdminHomari();
 
 
             Application.Run(formari);

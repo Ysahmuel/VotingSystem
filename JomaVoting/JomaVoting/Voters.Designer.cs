@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             dataGridView1 = new DataGridView();
             LastName = new DataGridViewTextBoxColumn();
             MiddleInitial = new DataGridViewTextBoxColumn();
@@ -38,19 +37,9 @@
             label2 = new Label();
             textBox1 = new TextBox();
             btnAddVoter = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Sans Serif Collection", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(138, 102);
-            label1.TabIndex = 2;
-            label1.Text = "Voters";
             // 
             // dataGridView1
             // 
@@ -122,6 +111,17 @@
             btnAddVoter.Text = "Add Voter";
             btnAddVoter.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(111, 42);
+            label1.TabIndex = 2;
+            label1.Text = "Voters";
+            // 
             // Voters
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -139,8 +139,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn LastName;
         private DataGridViewTextBoxColumn MiddleInitial;
@@ -150,5 +148,6 @@
         private Label label2;
         private TextBox textBox1;
         private Button btnAddVoter;
+        private Label label1;
     }
 }
