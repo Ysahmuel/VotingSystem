@@ -9,11 +9,11 @@ languages: C#, SQL
   - User Home (Added)
   - Log In (Not yet)
   - Register (Not yet)
-  - Dashboard UC (Added)
-  - Votes UC (Added)
-  - Voters UC (Added)
-  - Position UC (Added)
-  - Candidates UC (Added)
+  - Admin Dashboard UC (Added)
+  - Admin Votes UC (Added)
+  - Admin Voters UC (Added)
+  - Admin Position UC (Added)
+  - Admin Candidates UC (Added)
   - (Update list)
 
     
