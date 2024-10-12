@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtPosition = new TextBox();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            cmbMaximumVote = new ComboBox();
             btnSubmit = new Button();
             SuspendLayout();
             // 
@@ -44,12 +44,12 @@
             label1.TabIndex = 0;
             label1.Text = "Position:";
             // 
-            // textBox1
+            // txtPosition
             // 
-            textBox1.Location = new Point(45, 75);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(481, 27);
-            textBox1.TabIndex = 1;
+            txtPosition.Location = new Point(45, 75);
+            txtPosition.Name = "txtPosition";
+            txtPosition.Size = new Size(481, 27);
+            txtPosition.TabIndex = 1;
             // 
             // label2
             // 
@@ -60,13 +60,13 @@
             label2.TabIndex = 2;
             label2.Text = "Maximum Vote:";
             // 
-            // comboBox1
+            // cmbMaximumVote
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(45, 168);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(139, 28);
-            comboBox1.TabIndex = 3;
+            cmbMaximumVote.FormattingEnabled = true;
+            cmbMaximumVote.Location = new Point(45, 168);
+            cmbMaximumVote.Name = "cmbMaximumVote";
+            cmbMaximumVote.Size = new Size(139, 28);
+            cmbMaximumVote.TabIndex = 3;
             // 
             // btnSubmit
             // 
@@ -76,6 +76,7 @@
             btnSubmit.TabIndex = 9;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // AddPosition
             // 
@@ -83,9 +84,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(568, 230);
             Controls.Add(btnSubmit);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbMaximumVote);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPosition);
             Controls.Add(label1);
             Name = "AddPosition";
             Text = "AddPosition";
@@ -96,9 +97,9 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtPosition;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox cmbMaximumVote;
         private Button btnSubmit;
     }
 }

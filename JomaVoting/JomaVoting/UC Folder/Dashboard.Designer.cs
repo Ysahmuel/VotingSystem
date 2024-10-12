@@ -56,7 +56,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(522, 175);
+            label6.Location = new Point(517, 175);
             label6.Name = "label6";
             label6.Size = new Size(231, 25);
             label6.TabIndex = 4;
@@ -90,9 +90,9 @@
             label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Image = Properties.Resources.user__1_;
             label3.ImageAlign = ContentAlignment.MiddleLeft;
-            label3.Location = new Point(110, 121);
+            label3.Location = new Point(89, 121);
             label3.Name = "label3";
-            label3.Size = new Size(102, 71);
+            label3.Size = new Size(123, 71);
             label3.TabIndex = 7;
             label3.Text = "0";
             label3.TextAlign = ContentAlignment.MiddleRight;
@@ -115,9 +115,9 @@
             label5.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Image = Properties.Resources.anonymous;
             label5.ImageAlign = ContentAlignment.MiddleLeft;
-            label5.Location = new Point(110, 266);
+            label5.Location = new Point(89, 266);
             label5.Name = "label5";
-            label5.Size = new Size(102, 71);
+            label5.Size = new Size(123, 71);
             label5.TabIndex = 9;
             label5.Text = "0";
             label5.TextAlign = ContentAlignment.MiddleRight;
@@ -140,9 +140,9 @@
             label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.Image = Properties.Resources.approved;
             label8.ImageAlign = ContentAlignment.MiddleLeft;
-            label8.Location = new Point(108, 413);
+            label8.Location = new Point(89, 413);
             label8.Name = "label8";
-            label8.Size = new Size(102, 71);
+            label8.Size = new Size(121, 71);
             label8.TabIndex = 11;
             label8.Text = "0";
             label8.TextAlign = ContentAlignment.MiddleRight;
@@ -165,9 +165,9 @@
             label10.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.Image = Properties.Resources.archive__1_;
             label10.ImageAlign = ContentAlignment.MiddleLeft;
-            label10.Location = new Point(327, 121);
+            label10.Location = new Point(307, 121);
             label10.Name = "label10";
-            label10.Size = new Size(102, 71);
+            label10.Size = new Size(122, 71);
             label10.TabIndex = 13;
             label10.Text = "0";
             label10.TextAlign = ContentAlignment.MiddleRight;

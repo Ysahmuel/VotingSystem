@@ -49,22 +49,22 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(621, 33);
+            label2.Location = new Point(438, 33);
             label2.Name = "label2";
-            label2.Size = new Size(53, 20);
+            label2.Size = new Size(56, 20);
             label2.TabIndex = 7;
-            label2.Text = "Search";
+            label2.Text = "Search:";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(431, 30);
+            textBox1.Location = new Point(513, 30);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(184, 27);
             textBox1.TabIndex = 6;
             // 
             // btnAddVoter
             // 
-            btnAddVoter.Location = new Point(130, 28);
+            btnAddVoter.Location = new Point(98, 29);
             btnAddVoter.Name = "btnAddVoter";
             btnAddVoter.Size = new Size(107, 29);
             btnAddVoter.TabIndex = 8;
