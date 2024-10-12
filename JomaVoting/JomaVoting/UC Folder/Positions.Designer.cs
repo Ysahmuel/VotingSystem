@@ -47,7 +47,7 @@
             label1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(87, 20);
+            label1.Size = new Size(74, 17);
             label1.TabIndex = 2;
             label1.Text = "Positions";
             // 
@@ -55,11 +55,12 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Position, MaximumVote, Edit, Delete });
-            dataGridView1.Location = new Point(37, 85);
+            dataGridView1.Location = new Point(32, 64);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(767, 355);
+            dataGridView1.Size = new Size(671, 266);
             dataGridView1.TabIndex = 3;
             // 
             // Position
@@ -97,39 +98,42 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(618, 33);
+            label2.Location = new Point(541, 25);
             label2.Name = "label2";
-            label2.Size = new Size(53, 20);
+            label2.Size = new Size(42, 15);
             label2.TabIndex = 9;
             label2.Text = "Search";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(427, 29);
+            textBox1.Location = new Point(374, 22);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(185, 27);
+            textBox1.Size = new Size(162, 23);
             textBox1.TabIndex = 8;
             // 
             // btnAddVoter
             // 
-            btnAddVoter.Location = new Point(168, 28);
+            btnAddVoter.Location = new Point(147, 21);
+            btnAddVoter.Margin = new Padding(3, 2, 3, 2);
             btnAddVoter.Name = "btnAddVoter";
-            btnAddVoter.Size = new Size(131, 32);
+            btnAddVoter.Size = new Size(115, 24);
             btnAddVoter.TabIndex = 10;
             btnAddVoter.Text = "Add Position";
             btnAddVoter.UseVisualStyleBackColor = true;
             // 
             // Positions
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnAddVoter);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Positions";
-            Size = new Size(823, 479);
+            Size = new Size(720, 359);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
