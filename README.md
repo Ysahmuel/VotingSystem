@@ -14,16 +14,24 @@ languages: C#, SQL
   - Admin Voters UC (Added)
   - Admin Position UC (Added)
   - Admin Candidates UC (Added)
-  - (Update list)
+  - (Updated list)
 
     
-* SQL (still not connected)
-  - Database (Not yet)
-  - Primary/Foreign keys (Not yet)
-  - Tables (Not yet)
-  - SQL integration in the GUI (Not Yet)
+* SQL (almost connected)
+  - Database (Added)
+  - Primary/Foreign keys (Added)
+  - Tables (Added)
+  - SQL integration in the GUI (Added)
+
   
 * Functions
-- Add Button (Working)
-- Delete Button (Working)
-- Edit (not yet)
+  - Add Button (Working)
+  - Delete Button (Working)
+  - Edit (Working)
+
+
+* Exception Handling
+  - Validation (Not yet)
+  
+
+
