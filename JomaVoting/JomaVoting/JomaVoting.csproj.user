@@ -1,37 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Candidates.cs">
+    <Compile Update="Forms\AddCandidate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddVoter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UC Folder\Candidates.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Dashboard.cs">
+    <Compile Update="UC Folder\Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="AdminHomari.cs">
+    <Compile Update="Forms\AdminHomari.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Homari.cs">
+    <Compile Update="Forms\Homari.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Home.cs">
+    <Compile Update="UC Folder\Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Party.cs">
+    <Compile Update="UC Folder\Party.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Positions.cs">
+    <Compile Update="UC Folder\Positions.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Voters.cs">
+    <Compile Update="UC Folder\Voters.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Votes.cs">
+    <Compile Update="UC Folder\Votes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Voting.cs">
+    <Compile Update="UC Folder\Voting.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

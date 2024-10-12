@@ -252,3 +252,14 @@ C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-w
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.genruntimeconfig.cache
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\ref\JomaVoting.dll
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Properties.Resources.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AdminHomari.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Properties.Resources.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddCandidate.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddPosition.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddVoter.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
