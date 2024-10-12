@@ -22,4 +22,8 @@ languages: C#, SQL
   - Primary/Foreign keys (Not yet)
   - Tables (Not yet)
   - SQL integration in the GUI (Not Yet)
-
+  
+* Functions
+- Add Button (Working)
+- Delete Button (Working)
+- Edit (not yet)
