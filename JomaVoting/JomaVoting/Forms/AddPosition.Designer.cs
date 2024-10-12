@@ -62,7 +62,9 @@
             // 
             // cmbMaximumVote
             // 
+            cmbMaximumVote.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMaximumVote.FormattingEnabled = true;
+            cmbMaximumVote.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
             cmbMaximumVote.Location = new Point(45, 168);
             cmbMaximumVote.Name = "cmbMaximumVote";
             cmbMaximumVote.Size = new Size(139, 28);

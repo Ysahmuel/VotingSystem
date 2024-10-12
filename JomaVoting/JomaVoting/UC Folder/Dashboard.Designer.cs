@@ -189,7 +189,7 @@
             Controls.Add(formsPlot1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Dashboard";
-            Size = new Size(926, 517);
+            Size = new Size(1065, 517);
             ResumeLayout(false);
             PerformLayout();
         }

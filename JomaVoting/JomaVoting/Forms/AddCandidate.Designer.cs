@@ -103,6 +103,7 @@
             cmbPositionsID.Name = "cmbPositionsID";
             cmbPositionsID.Size = new Size(276, 28);
             cmbPositionsID.TabIndex = 15;
+            cmbPositionsID.SelectedIndexChanged += cmbPositionsID_SelectedIndexChanged;
             // 
             // btnSubmit
             // 

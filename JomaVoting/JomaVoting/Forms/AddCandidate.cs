@@ -14,9 +14,11 @@ namespace JomaVoting
     public partial class AddCandidate : Form
     {
         private int CandidateID = -1;
+        private List<string> allPosition = new List<string>();
         public AddCandidate()
         {
             InitializeComponent();
+            LoadPosition();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -82,6 +84,41 @@ namespace JomaVoting
             {
                 MessageBox.Show("An error occurred while saving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadPosition()
+        {
+            string query = "SELECT PositionDescription FROM TBL_Position";
+
+            using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            string PositionDescription = reader["PositionDescription"].ToString().Trim();
+
+                            cmbPositionsID.Items.Add(PositionDescription);
+                            allPosition.Add(PositionDescription);
+                        }
+
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private void cmbPositionsID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
