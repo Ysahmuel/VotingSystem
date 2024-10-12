@@ -36,7 +36,7 @@
             Delete = new DataGridViewTextBoxColumn();
             label2 = new Label();
             textBox1 = new TextBox();
-            btnAddPosition = new Button();
+            btnAddVoter = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -47,11 +47,7 @@
             label1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-<<<<<<< Updated upstream:JomaVoting/JomaVoting/Positions.Designer.cs
-            label1.Size = new Size(74, 17);
-=======
-            label1.Size = new Size(105, 58);
->>>>>>> Stashed changes:JomaVoting/JomaVoting/UC Folder/Positions.Designer.cs
+            label1.Size = new Size(87, 20);
             label1.TabIndex = 2;
             label1.Text = "Positions";
             // 
@@ -59,11 +55,11 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Position, MaximumVote, Edit, Delete });
-            dataGridView1.Location = new Point(32, 64);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(37, 85);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(671, 266);
+            dataGridView1.Size = new Size(767, 355);
             dataGridView1.TabIndex = 3;
             // 
             // Position
@@ -71,6 +67,7 @@
             Position.HeaderText = "Position";
             Position.MinimumWidth = 6;
             Position.Name = "Position";
+            Position.ReadOnly = true;
             Position.Width = 125;
             // 
             // MaximumVote
@@ -78,6 +75,7 @@
             MaximumVote.HeaderText = "MaximumVote";
             MaximumVote.MinimumWidth = 6;
             MaximumVote.Name = "MaximumVote";
+            MaximumVote.ReadOnly = true;
             MaximumVote.Width = 125;
             // 
             // Edit
@@ -85,6 +83,7 @@
             Edit.HeaderText = "Edit";
             Edit.MinimumWidth = 6;
             Edit.Name = "Edit";
+            Edit.ReadOnly = true;
             Edit.Width = 125;
             // 
             // Delete
@@ -92,57 +91,45 @@
             Delete.HeaderText = "Delete";
             Delete.MinimumWidth = 6;
             Delete.Name = "Delete";
+            Delete.ReadOnly = true;
             Delete.Width = 125;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(541, 25);
+            label2.Location = new Point(618, 33);
             label2.Name = "label2";
-            label2.Size = new Size(42, 15);
+            label2.Size = new Size(53, 20);
             label2.TabIndex = 9;
             label2.Text = "Search";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(374, 22);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(427, 29);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(162, 23);
+            textBox1.Size = new Size(185, 27);
             textBox1.TabIndex = 8;
             // 
-            // btnAddPosition
+            // btnAddVoter
             // 
-<<<<<<< Updated upstream:JomaVoting/JomaVoting/Positions.Designer.cs
-            btnAddVoter.Location = new Point(147, 21);
-            btnAddVoter.Margin = new Padding(3, 2, 3, 2);
+            btnAddVoter.Location = new Point(168, 28);
             btnAddVoter.Name = "btnAddVoter";
-            btnAddVoter.Size = new Size(115, 24);
+            btnAddVoter.Size = new Size(131, 32);
             btnAddVoter.TabIndex = 10;
             btnAddVoter.Text = "Add Position";
             btnAddVoter.UseVisualStyleBackColor = true;
-=======
-            btnAddPosition.Location = new Point(168, 28);
-            btnAddPosition.Name = "btnAddPosition";
-            btnAddPosition.Size = new Size(131, 29);
-            btnAddPosition.TabIndex = 10;
-            btnAddPosition.Text = "Add Position";
-            btnAddPosition.UseVisualStyleBackColor = true;
-            btnAddPosition.Click += btnAddPosition_Click;
->>>>>>> Stashed changes:JomaVoting/JomaVoting/UC Folder/Positions.Designer.cs
             // 
             // Positions
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnAddPosition);
+            Controls.Add(btnAddVoter);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Positions";
-            Size = new Size(720, 359);
+            Size = new Size(823, 479);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -158,6 +145,6 @@
         private DataGridViewTextBoxColumn Delete;
         private Label label2;
         private TextBox textBox1;
-        private Button btnAddPosition;
+        private Button btnAddVoter;
     }
 }

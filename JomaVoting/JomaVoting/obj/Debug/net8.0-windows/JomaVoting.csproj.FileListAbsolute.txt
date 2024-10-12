@@ -24,7 +24,6 @@ C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\D
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.pdb
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Form1.resources
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVote.Homari.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Home.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Party.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Voting.resources

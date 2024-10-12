@@ -56,9 +56,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(278, 232);
+            label6.Location = new Point(522, 175);
             label6.Name = "label6";
-            label6.Size = new Size(183, 20);
+            label6.Size = new Size(231, 25);
             label6.TabIndex = 4;
             label6.Text = "Ranking of Each Positions";
             // 
@@ -68,7 +68,7 @@
             label1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(150, 37);
+            label1.Size = new Size(188, 46);
             label1.TabIndex = 5;
             label1.Text = "Dashboard";
             // 
