@@ -35,21 +35,22 @@
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Sans Serif Collection", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(132, 102);
+            label1.Size = new Size(82, 29);
             label1.TabIndex = 0;
             label1.Text = "Home";
             // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Home";
-            Size = new Size(700, 400);
+            Size = new Size(720, 359);
             ResumeLayout(false);
             PerformLayout();
         }

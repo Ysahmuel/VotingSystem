@@ -61,7 +61,7 @@
             panel1.ForeColor = Color.Cornsilk;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(787, 39);
+            panel1.Size = new Size(1100, 39);
             panel1.TabIndex = 1;
             // 
             // btnSearch
@@ -69,7 +69,7 @@
             btnSearch.BackColor = Color.Gray;
             btnSearch.FlatAppearance.BorderColor = Color.Gray;
             btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.Location = new Point(717, 7);
+            btnSearch.Location = new Point(1043, 7);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(50, 23);
             btnSearch.TabIndex = 0;
@@ -81,7 +81,7 @@
             txtSearch.BackColor = Color.Gray;
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.ForeColor = Color.White;
-            txtSearch.Location = new Point(502, 8);
+            txtSearch.Location = new Point(828, 8);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(209, 20);
@@ -121,7 +121,7 @@
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 39);
             panel2.Name = "panel2";
-            panel2.Size = new Size(175, 320);
+            panel2.Size = new Size(175, 541);
             panel2.TabIndex = 2;
             // 
             // btnCandidates
@@ -171,7 +171,7 @@
             btnExit.ForeColor = SystemColors.ControlText;
             btnExit.Image = Properties.Resources.log_out;
             btnExit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExit.Location = new Point(0, 277);
+            btnExit.Location = new Point(0, 498);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(175, 43);
             btnExit.TabIndex = 4;
@@ -244,7 +244,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(175, 320);
+            panel3.Size = new Size(175, 541);
             panel3.TabIndex = 1;
             // 
             // pictureBox2
@@ -263,7 +263,7 @@
             pnlMain.Location = new Point(175, 39);
             pnlMain.Margin = new Padding(3, 2, 3, 2);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(612, 320);
+            pnlMain.Size = new Size(925, 541);
             pnlMain.TabIndex = 3;
             pnlMain.Paint += pnlMain_Paint;
             // 
@@ -271,12 +271,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(787, 359);
+            ClientSize = new Size(1100, 580);
             Controls.Add(pnlMain);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 2, 3, 2);
             Name = "AdminHomari";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "JomaVote - Admin";
             Load += Form1_Load;
             panel1.ResumeLayout(false);

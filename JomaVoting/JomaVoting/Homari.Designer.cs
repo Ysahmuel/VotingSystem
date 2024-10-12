@@ -47,18 +47,17 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 52);
+            panel1.Size = new Size(938, 39);
             panel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Sans Serif Collection", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(118, 32);
+            label1.Size = new Size(62, 13);
             label1.TabIndex = 0;
             label1.Text = "JomaVote";
             // 
@@ -71,10 +70,9 @@
             panel2.Controls.Add(btnHome);
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 52);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(0, 39);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 510);
+            panel2.Size = new Size(175, 452);
             panel2.TabIndex = 1;
             // 
             // btnExit
@@ -83,10 +81,9 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = SystemColors.ControlText;
-            btnExit.Location = new Point(0, 468);
-            btnExit.Margin = new Padding(3, 4, 3, 4);
+            btnExit.Location = new Point(0, 420);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(200, 42);
+            btnExit.Size = new Size(175, 32);
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
@@ -98,10 +95,9 @@
             btnVoting.FlatStyle = FlatStyle.Flat;
             btnVoting.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVoting.ForeColor = SystemColors.ControlText;
-            btnVoting.Location = new Point(0, 158);
-            btnVoting.Margin = new Padding(3, 4, 3, 4);
+            btnVoting.Location = new Point(0, 118);
             btnVoting.Name = "btnVoting";
-            btnVoting.Size = new Size(200, 60);
+            btnVoting.Size = new Size(175, 45);
             btnVoting.TabIndex = 3;
             btnVoting.Text = "Vote";
             btnVoting.UseVisualStyleBackColor = true;
@@ -113,10 +109,9 @@
             btnParty.FlatStyle = FlatStyle.Flat;
             btnParty.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnParty.ForeColor = SystemColors.ControlText;
-            btnParty.Location = new Point(0, 98);
-            btnParty.Margin = new Padding(3, 4, 3, 4);
+            btnParty.Location = new Point(0, 73);
             btnParty.Name = "btnParty";
-            btnParty.Size = new Size(200, 60);
+            btnParty.Size = new Size(175, 45);
             btnParty.TabIndex = 2;
             btnParty.Text = "Party List";
             btnParty.UseVisualStyleBackColor = true;
@@ -128,10 +123,9 @@
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHome.ForeColor = SystemColors.ControlText;
-            btnHome.Location = new Point(0, 38);
-            btnHome.Margin = new Padding(3, 4, 3, 4);
+            btnHome.Location = new Point(0, 28);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(200, 60);
+            btnHome.Size = new Size(175, 45);
             btnHome.TabIndex = 0;
             btnHome.Text = "Home";
             btnHome.UseVisualStyleBackColor = true;
@@ -141,30 +135,29 @@
             // 
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 38);
+            panel3.Size = new Size(175, 28);
             panel3.TabIndex = 1;
             // 
             // pnlMain
             // 
             pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(200, 52);
+            pnlMain.Location = new Point(175, 39);
+            pnlMain.Margin = new Padding(3, 2, 3, 2);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(600, 510);
+            pnlMain.Size = new Size(763, 452);
             pnlMain.TabIndex = 2;
             // 
             // Homari
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 562);
+            ClientSize = new Size(938, 491);
             Controls.Add(pnlMain);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Homari";
             Text = "JomaVote - User";
             Load += Homari_Load;

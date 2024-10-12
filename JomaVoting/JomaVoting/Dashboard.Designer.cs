@@ -28,192 +28,183 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label1 = new Label();
-            panel2 = new Panel();
-            label2 = new Label();
-            panel3 = new Panel();
-            label3 = new Label();
-            panel4 = new Panel();
-            label4 = new Label();
-            panel5 = new Panel();
-            label5 = new Label();
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             label6 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
             label7 = new Label();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveBorder;
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(25, 45);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(161, 61);
-            panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(153, 17);
-            label1.TabIndex = 0;
-            label1.Text = "No. of regestered voters";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ActiveBorder;
-            panel2.Controls.Add(label2);
-            panel2.Location = new Point(192, 45);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(164, 61);
-            panel2.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(5, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(156, 17);
-            label2.TabIndex = 1;
-            label2.Text = "No. of anonymous voters";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = SystemColors.ActiveBorder;
-            panel3.Controls.Add(label3);
-            panel3.Location = new Point(362, 45);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(164, 61);
-            panel3.TabIndex = 1;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(36, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(76, 17);
-            label3.TabIndex = 1;
-            label3.Text = "Total voters";
-            label3.Click += label3_Click;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = SystemColors.ActiveBorder;
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(532, 45);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(165, 61);
-            panel4.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 28);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 17);
-            label4.TabIndex = 2;
-            label4.Text = "No. of candidates";
-            // 
-            // panel5
-            // 
-            panel5.BackColor = SystemColors.ActiveBorder;
-            panel5.Controls.Add(label5);
-            panel5.Location = new Point(22, 139);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(164, 63);
-            panel5.TabIndex = 2;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 28);
-            label5.Name = "label5";
-            label5.Size = new Size(102, 17);
-            label5.TabIndex = 1;
-            label5.Text = "No. of positions";
             // 
             // formsPlot1
             // 
+            formsPlot1.BackColor = SystemColors.ControlDarkDark;
             formsPlot1.DisplayScale = 1.25F;
-            formsPlot1.Location = new Point(192, 139);
+            formsPlot1.ForeColor = Color.White;
+            formsPlot1.Location = new Point(235, 218);
+            formsPlot1.Margin = new Padding(3, 2, 3, 2);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(489, 243);
+            formsPlot1.Size = new Size(673, 274);
             formsPlot1.TabIndex = 3;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(349, 116);
+            label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(278, 232);
             label6.Name = "label6";
-            label6.Size = new Size(177, 20);
+            label6.Size = new Size(183, 20);
             label6.TabIndex = 4;
             label6.Text = "Ranking of Each Positions";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(150, 37);
+            label1.TabIndex = 5;
+            label1.Text = "Dashboard";
+            // 
+            // label2
+            // 
+            label2.BackColor = SystemColors.ButtonFace;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(18, 72);
+            label2.Name = "label2";
+            label2.Padding = new Padding(5, 5, 0, 0);
+            label2.Size = new Size(202, 128);
+            label2.TabIndex = 6;
+            label2.Text = "Registered Voters";
+            // 
+            // label3
+            // 
+            label3.BackColor = SystemColors.ButtonFace;
+            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Image = Properties.Resources.user__1_;
+            label3.ImageAlign = ContentAlignment.MiddleLeft;
+            label3.Location = new Point(110, 121);
+            label3.Name = "label3";
+            label3.Size = new Size(102, 71);
+            label3.TabIndex = 7;
+            label3.Text = "0";
+            label3.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            label4.BackColor = SystemColors.ButtonFace;
+            label4.BorderStyle = BorderStyle.FixedSingle;
+            label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(18, 218);
+            label4.Name = "label4";
+            label4.Padding = new Padding(5, 5, 0, 0);
+            label4.Size = new Size(202, 128);
+            label4.TabIndex = 8;
+            label4.Text = "Anonymous Voters";
+            // 
+            // label5
+            // 
+            label5.BackColor = SystemColors.ButtonFace;
+            label5.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Image = Properties.Resources.anonymous;
+            label5.ImageAlign = ContentAlignment.MiddleLeft;
+            label5.Location = new Point(110, 266);
+            label5.Name = "label5";
+            label5.Size = new Size(102, 71);
+            label5.TabIndex = 9;
+            label5.Text = "0";
+            label5.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Top;
-            label7.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(0, 0);
+            label7.BackColor = SystemColors.ButtonFace;
+            label7.BorderStyle = BorderStyle.FixedSingle;
+            label7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(18, 364);
             label7.Name = "label7";
-            label7.Size = new Size(173, 42);
-            label7.TabIndex = 5;
-            label7.Text = "Dashboard";
+            label7.Padding = new Padding(5, 5, 0, 0);
+            label7.Size = new Size(202, 128);
+            label7.TabIndex = 10;
+            label7.Text = "Candidates";
+            // 
+            // label8
+            // 
+            label8.BackColor = SystemColors.ButtonFace;
+            label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Image = Properties.Resources.approved;
+            label8.ImageAlign = ContentAlignment.MiddleLeft;
+            label8.Location = new Point(108, 413);
+            label8.Name = "label8";
+            label8.Size = new Size(102, 71);
+            label8.TabIndex = 11;
+            label8.Text = "0";
+            label8.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            label9.BackColor = SystemColors.ButtonFace;
+            label9.BorderStyle = BorderStyle.FixedSingle;
+            label9.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(235, 72);
+            label9.Name = "label9";
+            label9.Padding = new Padding(5, 5, 0, 0);
+            label9.Size = new Size(202, 128);
+            label9.TabIndex = 12;
+            label9.Text = "Votes";
+            // 
+            // label10
+            // 
+            label10.BackColor = SystemColors.ButtonFace;
+            label10.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Image = Properties.Resources.archive__1_;
+            label10.ImageAlign = ContentAlignment.MiddleLeft;
+            label10.Location = new Point(327, 121);
+            label10.Name = "label10";
+            label10.Size = new Size(102, 71);
+            label10.TabIndex = 13;
+            label10.Text = "0";
+            label10.TextAlign = ContentAlignment.MiddleRight;
             // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.White;
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(label7);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(label6);
             Controls.Add(formsPlot1);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Dashboard";
-            Size = new Size(700, 400);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
+            Size = new Size(926, 517);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel4;
-        private Panel panel5;
         private ScottPlot.WinForms.FormsPlot formsPlot1;
+        private Label label6;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
         private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
     }
 }

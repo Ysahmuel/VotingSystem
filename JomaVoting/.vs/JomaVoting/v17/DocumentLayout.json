@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\jomavoting\\adminhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\adminhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\user\\source\\repos\\votingsystem\\jomavoting\\jomavoting\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\user\\source\\repos\\votingsystem\\jomavoting\\jomavoting\\adminhomari.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\adminhomari.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\jomavoting\\adminhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\adminhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,20 +38,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminHomari.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Source\\Repos\\VotingSystem\\JomaVoting\\JomaVoting\\AdminHomari.Designer.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\AdminHomari.Designer.cs",
-              "ToolTip": "C:\\Users\\USER\\Source\\Repos\\VotingSystem\\JomaVoting\\JomaVoting\\AdminHomari.Designer.cs",
-              "RelativeToolTip": "JomaVoting\\AdminHomari.Designer.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACQBAAAcAAAA",
+              "DocumentIndex": 0,
+              "Title": "Dashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\Dashboard.cs",
+              "RelativeDocumentMoniker": "JomaVoting\\Dashboard.cs",
+              "ToolTip": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\Dashboard.cs [Design]",
+              "RelativeToolTip": "JomaVoting\\Dashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T08:29:08.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T00:43:03.75Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminHomari.cs [Design]",
               "DocumentMoniker": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\AdminHomari.cs",
               "RelativeDocumentMoniker": "JomaVoting\\AdminHomari.cs",
