@@ -39,6 +39,8 @@
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
+            lblDate = new Label();
+            lblTime = new Label();
             SuspendLayout();
             // 
             // formsPlot1
@@ -58,7 +60,7 @@
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(517, 175);
             label6.Name = "label6";
-            label6.Size = new Size(231, 25);
+            label6.Size = new Size(183, 20);
             label6.TabIndex = 4;
             label6.Text = "Ranking of Each Positions";
             // 
@@ -68,7 +70,7 @@
             label1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(188, 46);
+            label1.Size = new Size(150, 37);
             label1.TabIndex = 5;
             label1.Text = "Dashboard";
             // 
@@ -172,10 +174,32 @@
             label10.Text = "0";
             label10.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // lblDate
+            // 
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDate.Location = new Point(733, 23);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(45, 20);
+            lblDate.TabIndex = 14;
+            lblDate.Text = "Date:";
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTime.Location = new Point(783, 49);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(46, 20);
+            lblTime.TabIndex = 15;
+            lblTime.Text = "Time:";
+            // 
             // Dashboard
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
+            Controls.Add(lblTime);
+            Controls.Add(lblDate);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -189,7 +213,7 @@
             Controls.Add(formsPlot1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Dashboard";
-            Size = new Size(1065, 517);
+            Size = new Size(923, 517);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,5 +230,7 @@
         private Label label8;
         private Label label9;
         private Label label10;
+        private Label lblDate;
+        private Label lblTime;
     }
 }

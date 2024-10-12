@@ -18,8 +18,22 @@ namespace JomaVoting
         public Dashboard()
         {
             InitializeComponent();
-            CreateAndDisplayPlot();
+            DisplayCurrentDateTime();  // Add date and time display logic
+            CreateAndDisplayPlot();    // Existing plot logic
         }
+
+        private void DisplayCurrentDateTime()
+        {
+            DateTime now = DateTime.Now;
+            // Set the current date in lblDate
+            string currentDate = now.ToString("MMMM dd, yyyy");
+            lblDate.Text = $"Date: {currentDate}";
+
+            // Set the current time in lblTime
+            string currentTime = now.ToString("hh:mm tt");
+            lblTime.Text = $"Time: {currentTime}";
+        }
+
         private void CreateAndDisplayPlot()
         {
             // Create a new ScottPlot.Plot
@@ -42,13 +56,13 @@ namespace JomaVoting
             // Create a tick for each bar with long titles
             Tick[] ticks =
             {
-        new Tick(0, "First Long Title"),
-        new Tick(1, "Second Long Title"),
-        new Tick(2, "Third Long Title"),
-        new Tick(3, "Fourth Long Title"),
-        new Tick(4, "Fifth Long Title"),
-        new Tick(5, "Sixth Long Title")
-    };
+                new Tick(0, "First Long Title"),
+                new Tick(1, "Second Long Title"),
+                new Tick(2, "Third Long Title"),
+                new Tick(3, "Fourth Long Title"),
+                new Tick(4, "Fifth Long Title"),
+                new Tick(5, "Sixth Long Title")
+            };
 
             // Assign custom tick labels to the bottom axis
             myPlot.Axes.Bottom.TickGenerator = new NumericManual(ticks);

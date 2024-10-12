@@ -43,7 +43,7 @@
             label1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(103, 20);
+            label1.Size = new Size(89, 17);
             label1.TabIndex = 2;
             label1.Text = "Candidates";
             // 
@@ -52,34 +52,37 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(13, 84);
+            dataGridView1.Location = new Point(11, 63);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1025, 364);
+            dataGridView1.Size = new Size(897, 273);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(415, 35);
+            label2.Location = new Point(363, 26);
             label2.Name = "label2";
-            label2.Size = new Size(53, 20);
+            label2.Size = new Size(42, 15);
             label2.TabIndex = 9;
             label2.Text = "Search";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(497, 32);
+            textBox1.Location = new Point(435, 24);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(185, 27);
+            textBox1.Size = new Size(162, 23);
             textBox1.TabIndex = 8;
             // 
             // btnAddCandidate
             // 
-            btnAddCandidate.Location = new Point(116, 31);
+            btnAddCandidate.Location = new Point(102, 23);
+            btnAddCandidate.Margin = new Padding(3, 2, 3, 2);
             btnAddCandidate.Name = "btnAddCandidate";
-            btnAddCandidate.Size = new Size(186, 29);
+            btnAddCandidate.Size = new Size(163, 22);
             btnAddCandidate.TabIndex = 10;
             btnAddCandidate.Text = "Add Candidate";
             btnAddCandidate.UseVisualStyleBackColor = true;
@@ -87,15 +90,16 @@
             // 
             // Candidates
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnAddCandidate);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Candidates";
-            Size = new Size(1065, 479);
+            Size = new Size(932, 359);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
