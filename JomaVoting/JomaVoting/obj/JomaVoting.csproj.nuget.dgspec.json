@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {}
+    "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {
+    "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
+        "projectUniqueName": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
         "projectName": "JomaVoting",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\VotingSystem\\JomaVoting\\JomaVoting\\obj\\",
+        "projectPath": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoting.csproj",
+        "packagesPath": "C:\\Users\\ROSA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ROSA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -86,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -37,6 +37,8 @@
             txtMiddleInitial = new TextBox();
             txtVoterID = new TextBox();
             btnSubmit = new Button();
+            label5 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -69,11 +71,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(45, 243);
+            label4.Location = new Point(45, 317);
             label4.Name = "label4";
-            label4.Size = new Size(59, 20);
+            label4.Size = new Size(62, 20);
             label4.TabIndex = 3;
-            label4.Text = "VoterID";
+            label4.Text = "VoterID:";
             // 
             // txtLastName
             // 
@@ -98,14 +100,14 @@
             // 
             // txtVoterID
             // 
-            txtVoterID.Location = new Point(45, 276);
+            txtVoterID.Location = new Point(45, 350);
             txtVoterID.Name = "txtVoterID";
-            txtVoterID.Size = new Size(173, 27);
+            txtVoterID.Size = new Size(132, 27);
             txtVoterID.TabIndex = 7;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(45, 330);
+            btnSubmit.Location = new Point(45, 404);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(94, 29);
             btnSubmit.TabIndex = 8;
@@ -113,11 +115,30 @@
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(45, 243);
+            label5.Name = "label5";
+            label5.Size = new Size(61, 20);
+            label5.TabIndex = 9;
+            label5.Text = "Section:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(45, 276);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(245, 28);
+            comboBox1.TabIndex = 10;
+            // 
             // AddVoter
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 378);
+            ClientSize = new Size(486, 454);
+            Controls.Add(comboBox1);
+            Controls.Add(label5);
             Controls.Add(btnSubmit);
             Controls.Add(txtVoterID);
             Controls.Add(txtMiddleInitial);
@@ -144,5 +165,7 @@
         private TextBox txtMiddleInitial;
         private TextBox txtVoterID;
         private Button btnSubmit;
+        private Label label5;
+        private ComboBox comboBox1;
     }
 }

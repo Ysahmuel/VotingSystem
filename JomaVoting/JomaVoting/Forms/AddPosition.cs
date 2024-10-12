@@ -18,6 +18,55 @@ namespace JomaVoting
         {
             InitializeComponent();
         }
+        public AddPosition(int positionID)
+        {
+            InitializeComponent();
+            PositionID = positionID;
+            LoadPositionData(); // Load voter data for editing
+        }
+        private void LoadPositionData()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT PositionDescription, MaximumVote FROM TBL_Position WHERE PositionID = @PositionID";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@PositionID", PositionID);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtPosition.Text = reader["PositionDescription"].ToString();
+                           
+
+                                int maxVote = Convert.ToInt32(reader["MaximumVote"]);
+
+                                // Loop through ComboBox items and select the matching one
+                                bool valueFound = false;
+
+                                foreach (var item in cmbMaximumVote.Items)
+                                {
+                                    // Compare item with the database value (maxVote)
+                                    if (Convert.ToInt32(item) == maxVote)
+                                    {
+                                        cmbMaximumVote.SelectedItem = item;
+                                        valueFound = true;
+                                        break;
+                                    }
+                                }
+                             }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading the position data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -66,8 +115,8 @@ namespace JomaVoting
                 MessageBox.Show("Position data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Clear fields after saving
-                txtPosition.Clear();    
-                cmbMaximumVote.Text = " ";
+                txtPosition.Clear();
+         
 
                 // Close the form
                 this.Close();

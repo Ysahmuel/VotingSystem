@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JomaVoting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6356ff31e3f5b3ed2f75f88d834eada57cac9636")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cdd63dc5231aebf8e659084a74065b742b574d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("JomaVoting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JomaVoting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -28,7 +28,7 @@ namespace JomaVoting
 
         private void LoadCandidateData()
         {
-            string query = "SELECT FirstName, MiddleInitial, LastName, PositionID FROM TBL_Candidate";
+            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Section, PositionID FROM TBL_Candidate";
 
             try
             {
@@ -111,7 +111,17 @@ namespace JomaVoting
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            // Check if 'Edit' button was clicked
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                int candidateID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CandidateID"].Value);
+
+                // Open the AddVoter form with the voterID for editing
+                AddCandidate addCandidateForm = new AddCandidate(candidateID);
+                addCandidateForm.ShowDialog(); // Use ShowDialog if you want the form to be modal
+                LoadCandidateData(); // Refresh data after editing
+            }
+            else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
                 DeleteCandidate(e.RowIndex);
             }

@@ -22,6 +22,40 @@ namespace JomaVoting
             InitializeComponent();
         }
 
+        public AddVoter(int voterID)
+        {
+            InitializeComponent();
+            VoterID = voterID;
+            LoadVoterData(); // Load voter data for editing
+        }
+        private void LoadVoterData()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT FirstName, MiddleInitial, LastName FROM TBL_Voter WHERE VoterID = @VoterID";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@VoterID", VoterID);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtFirstName.Text = reader["FirstName"].ToString();
+                                txtMiddleInitial.Text = reader["MiddleInitial"].ToString();
+                                txtLastName.Text = reader["LastName"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading the voter data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // Simulate saving data

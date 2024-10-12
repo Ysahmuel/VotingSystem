@@ -112,7 +112,17 @@ namespace JomaVoting
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            // Check if 'Edit' button was clicked
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                int positionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["PositionID"].Value);
+
+                // Open the AddVoter form with the voterID for editing
+                AddPosition addPositionForm = new AddPosition(positionID);
+                addPositionForm.ShowDialog(); // Use ShowDialog if you want the form to be modal
+                LoadPositionData(); // Refresh data after editing
+            }
+            else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
                 DeletePosition(e.RowIndex);
             }
