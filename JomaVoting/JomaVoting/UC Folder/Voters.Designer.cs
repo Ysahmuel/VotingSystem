@@ -66,9 +66,9 @@
             // 
             // btnAddVoter
             // 
-            btnAddVoter.Location = new Point(98, 29);
+            btnAddVoter.Location = new Point(99, 21);
             btnAddVoter.Name = "btnAddVoter";
-            btnAddVoter.Size = new Size(107, 29);
+            btnAddVoter.Size = new Size(142, 44);
             btnAddVoter.TabIndex = 8;
             btnAddVoter.Text = "Add Voter";
             btnAddVoter.UseVisualStyleBackColor = true;

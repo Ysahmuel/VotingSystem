@@ -28,7 +28,7 @@ namespace JomaVoting
 
         private void LoadCandidateData()
         {
-            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Section, PositionID FROM TBL_Candidate";
+            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Picture, Section, PositionID FROM TBL_Candidate";
 
             try
             {

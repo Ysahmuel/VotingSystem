@@ -77,9 +77,9 @@
             // 
             // btnAddCandidate
             // 
-            btnAddCandidate.Location = new Point(117, 31);
+            btnAddCandidate.Location = new Point(118, 22);
             btnAddCandidate.Name = "btnAddCandidate";
-            btnAddCandidate.Size = new Size(186, 29);
+            btnAddCandidate.Size = new Size(186, 47);
             btnAddCandidate.TabIndex = 10;
             btnAddCandidate.Text = "Add Candidate";
             btnAddCandidate.UseVisualStyleBackColor = true;

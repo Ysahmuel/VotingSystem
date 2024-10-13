@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace JomaVoting
 {
@@ -25,7 +26,7 @@ namespace JomaVoting
             InitializeComponent();
             CandidateID = candidateID;
             LoadPosition();
-            LoadCandidateData(); 
+            LoadCandidateData();
         }
 
         private void LoadCandidateData()
@@ -54,10 +55,9 @@ namespace JomaVoting
 
                                 string positionDescription = reader["PositionDescription"].ToString().Trim();
 
-                                // Set the selected item in the ComboBox
                                 if (cmbPositionsID.Items.Contains(positionDescription))
                                 {
-                                    cmbPositionsID.SelectedItem = positionDescription; 
+                                    cmbPositionsID.SelectedItem = positionDescription;
                                 }
                                 else
                                 {
@@ -78,12 +78,38 @@ namespace JomaVoting
             }
         }
 
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            Bitmap resizedImage = new Bitmap(width, height);
+
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(image, 0, 0, width, height);
+            }
+
+            return resizedImage;
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string firstName = txtFirstName.Text;
             string middleInitial = txtMiddleInitial.Text;
             string lastName = txtLastName.Text;
-            string positionDescription = cmbPositionsID.SelectedItem?.ToString(); 
+            string positionDescription = cmbPositionsID.SelectedItem?.ToString();
+            byte[] pictureData = null;
+
+            if (pictureBox1.Image != null)
+            {
+      
+                Image resizedImage = ResizeImage(pictureBox1.Image, 50, 50);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    resizedImage.Save(ms, ImageFormat.Png); 
+                    pictureData = ms.ToArray();
+                }
+            }
 
             // Save data to the database
             try
@@ -96,12 +122,12 @@ namespace JomaVoting
                     if (CandidateID == -1)
                     {
                         // Insert new candidate
-                        query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, PositionID) VALUES (@FirstName, @MiddleInitial, @LastName, @PositionID)";
+                        query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, PositionID) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @PositionID)";
                     }
                     else
                     {
                         // Update existing candidate
-                        query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, PositionID = @PositionID WHERE CandidateID = @CandidateID";
+                        query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, PositionID = @PositionID WHERE CandidateID = @CandidateID";
                     }
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -111,10 +137,20 @@ namespace JomaVoting
                         cmd.Parameters.AddWithValue("@LastName", lastName);
                         cmd.Parameters.AddWithValue("@PositionID", positionDescription);
 
+                        if (pictureData != null)
+                        {
+                            cmd.Parameters.AddWithValue("@Picture", pictureData);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Picture", DBNull.Value); 
+                        }
+
                         if (CandidateID != -1)
                         {
                             cmd.Parameters.AddWithValue("@CandidateID", CandidateID);
                         }
+
 
                         cmd.ExecuteNonQuery();
                     }
@@ -145,7 +181,7 @@ namespace JomaVoting
                         while (reader.Read())
                         {
                             string positionDescription = reader["PositionDescription"].ToString().Trim();
-                            cmbPositionsID.Items.Add(positionDescription); 
+                            cmbPositionsID.Items.Add(positionDescription);
                         }
 
                         reader.Close();
@@ -157,11 +193,21 @@ namespace JomaVoting
                 }
             }
         }
-     
+
 
         private void cmbPositionsID_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnInsertImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png) | *.jpg; *.jpeg; *.gif; *.bmp; *.png";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
+            }
         }
     }
 }

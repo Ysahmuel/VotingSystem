@@ -78,9 +78,9 @@
             // 
             // btnAddPosition
             // 
-            btnAddPosition.Location = new Point(156, 35);
+            btnAddPosition.Location = new Point(156, 25);
             btnAddPosition.Name = "btnAddPosition";
-            btnAddPosition.Size = new Size(131, 32);
+            btnAddPosition.Size = new Size(160, 42);
             btnAddPosition.TabIndex = 10;
             btnAddPosition.Text = "Add Position";
             btnAddPosition.UseVisualStyleBackColor = true;
