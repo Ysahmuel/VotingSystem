@@ -1,5 +1,7 @@
 JomaRead
 
+Current working (Voter User Interface & Database)
+
 Voting system for Advanced Database System
 
 languages: C#, SQL
@@ -27,7 +29,7 @@ languages: C#, SQL
 * Functions
   - Add Button (Working)
   - Delete Button (Working)
-  - Edit (Working)
+  - Edit Button (Working)
 
 
 * Exception Handling
