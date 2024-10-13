@@ -39,106 +39,167 @@
             btnSubmit = new Button();
             cmbSection = new ComboBox();
             label5 = new Label();
+            label6 = new Label();
+            btnCancel = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txtMiddleInitial
             // 
-            txtMiddleInitial.Location = new Point(25, 189);
+            txtMiddleInitial.Location = new Point(313, 92);
+            txtMiddleInitial.Margin = new Padding(3, 2, 3, 2);
             txtMiddleInitial.Name = "txtMiddleInitial";
-            txtMiddleInitial.Size = new Size(276, 27);
+            txtMiddleInitial.Size = new Size(27, 23);
             txtMiddleInitial.TabIndex = 14;
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(25, 118);
+            txtFirstName.Location = new Point(206, 92);
+            txtFirstName.Margin = new Padding(3, 2, 3, 2);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(276, 27);
+            txtFirstName.Size = new Size(101, 23);
             txtFirstName.TabIndex = 13;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(25, 47);
+            txtLastName.Location = new Point(346, 92);
+            txtLastName.Margin = new Padding(3, 2, 3, 2);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(276, 27);
+            txtLastName.Size = new Size(101, 23);
             txtLastName.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(25, 300);
+            label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label4.Location = new Point(205, 187);
             label4.Name = "label4";
-            label4.Size = new Size(79, 20);
+            label4.Size = new Size(82, 20);
             label4.TabIndex = 11;
             label4.Text = "PositionID:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(25, 157);
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label3.Location = new Point(309, 70);
             label3.Name = "label3";
-            label3.Size = new Size(100, 20);
+            label3.Size = new Size(31, 20);
             label3.TabIndex = 10;
-            label3.Text = "Middle Initial:";
+            label3.Text = "MI:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(25, 86);
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label2.Location = new Point(203, 70);
             label2.Name = "label2";
-            label2.Size = new Size(83, 20);
+            label2.Size = new Size(87, 20);
             label2.TabIndex = 9;
             label2.Text = "First Name:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(25, 15);
+            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label1.Location = new Point(345, 70);
             label1.Name = "label1";
-            label1.Size = new Size(82, 20);
+            label1.Size = new Size(84, 20);
             label1.TabIndex = 8;
             label1.Text = "Last Name:";
             // 
             // cmbPositionsID
             // 
             cmbPositionsID.FormattingEnabled = true;
-            cmbPositionsID.Location = new Point(25, 332);
+            cmbPositionsID.Location = new Point(206, 209);
+            cmbPositionsID.Margin = new Padding(3, 2, 3, 2);
             cmbPositionsID.Name = "cmbPositionsID";
-            cmbPositionsID.Size = new Size(276, 28);
+            cmbPositionsID.Size = new Size(242, 23);
             cmbPositionsID.TabIndex = 15;
             cmbPositionsID.SelectedIndexChanged += cmbPositionsID_SelectedIndexChanged;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(25, 399);
+            btnSubmit.BackColor = Color.Black;
+            btnSubmit.FlatAppearance.BorderColor = Color.RoyalBlue;
+            btnSubmit.FlatAppearance.BorderSize = 0;
+            btnSubmit.FlatStyle = FlatStyle.Flat;
+            btnSubmit.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSubmit.ForeColor = Color.White;
+            btnSubmit.Location = new Point(350, 251);
+            btnSubmit.Margin = new Padding(3, 2, 3, 2);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(94, 29);
+            btnSubmit.Size = new Size(98, 35);
             btnSubmit.TabIndex = 16;
             btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
             // cmbSection
             // 
             cmbSection.FormattingEnabled = true;
-            cmbSection.Location = new Point(25, 260);
+            cmbSection.Location = new Point(206, 150);
+            cmbSection.Margin = new Padding(3, 2, 3, 2);
             cmbSection.Name = "cmbSection";
-            cmbSection.Size = new Size(276, 28);
+            cmbSection.Size = new Size(241, 23);
             cmbSection.TabIndex = 18;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(25, 228);
+            label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label5.Location = new Point(202, 125);
             label5.Name = "label5";
-            label5.Size = new Size(61, 20);
+            label5.Size = new Size(63, 20);
             label5.TabIndex = 17;
             label5.Text = "Section:";
             // 
+            // label6
+            // 
+            label6.BackColor = SystemColors.ActiveCaptionText;
+            label6.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(0, -1);
+            label6.Name = "label6";
+            label6.Padding = new Padding(5, 10, 0, 0);
+            label6.Size = new Size(461, 44);
+            label6.TabIndex = 19;
+            label6.Text = "Add Candidate";
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.FromArgb(224, 224, 224);
+            btnCancel.FlatAppearance.BorderColor = Color.Black;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancel.ForeColor = Color.Black;
+            btnCancel.Location = new Point(246, 251);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(98, 35);
+            btnCancel.TabIndex = 20;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Generic_Profile_Placeholder1;
+            pictureBox1.Location = new Point(7, 59);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(187, 196);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // AddCandidate
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 451);
+            AutoSize = true;
+            ClientSize = new Size(460, 308);
+            Controls.Add(pictureBox1);
+            Controls.Add(btnCancel);
+            Controls.Add(label6);
             Controls.Add(cmbSection);
             Controls.Add(label5);
             Controls.Add(btnSubmit);
@@ -150,8 +211,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AddCandidate";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCandidate";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -168,5 +232,8 @@
         private Button btnSubmit;
         private ComboBox cmbSection;
         private Label label5;
+        private Label label6;
+        private Button btnCancel;
+        private PictureBox pictureBox1;
     }
 }

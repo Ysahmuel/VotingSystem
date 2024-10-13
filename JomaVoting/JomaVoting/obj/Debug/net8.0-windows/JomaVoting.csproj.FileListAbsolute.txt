@@ -229,7 +229,6 @@ C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-w
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AdminHomari.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Candidates.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Dashboard.resources
-C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Form1.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Home.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Party.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Positions.resources
@@ -270,3 +269,4 @@ C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-w
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddPosition.resources
 C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddVoter.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.VoterHomari.resources
+C:\Users\USER\Source\Repos\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.VoterHomari.resources
