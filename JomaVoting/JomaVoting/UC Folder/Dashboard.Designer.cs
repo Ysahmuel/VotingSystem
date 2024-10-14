@@ -36,7 +36,7 @@
             label4 = new Label();
             label5 = new Label();
             label7 = new Label();
-            label8 = new Label();
+            lblCandidateCount = new Label();
             label9 = new Label();
             label10 = new Label();
             lblDate = new Label();
@@ -136,18 +136,18 @@
             label7.TabIndex = 10;
             label7.Text = "Candidates";
             // 
-            // label8
+            // lblCandidateCount
             // 
-            label8.BackColor = SystemColors.ButtonFace;
-            label8.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Image = Properties.Resources.approved;
-            label8.ImageAlign = ContentAlignment.MiddleLeft;
-            label8.Location = new Point(89, 413);
-            label8.Name = "label8";
-            label8.Size = new Size(121, 71);
-            label8.TabIndex = 11;
-            label8.Text = "0";
-            label8.TextAlign = ContentAlignment.MiddleRight;
+            lblCandidateCount.BackColor = SystemColors.ButtonFace;
+            lblCandidateCount.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCandidateCount.Image = Properties.Resources.approved;
+            lblCandidateCount.ImageAlign = ContentAlignment.MiddleLeft;
+            lblCandidateCount.Location = new Point(89, 413);
+            lblCandidateCount.Name = "lblCandidateCount";
+            lblCandidateCount.Size = new Size(121, 71);
+            lblCandidateCount.TabIndex = 11;
+            lblCandidateCount.Text = "0";
+            lblCandidateCount.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
@@ -202,7 +202,7 @@
             Controls.Add(lblDate);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(label8);
+            Controls.Add(lblCandidateCount);
             Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -227,7 +227,7 @@
         private Label label4;
         private Label label5;
         private Label label7;
-        private Label label8;
+        private Label lblCandidateCount;
         private Label label9;
         private Label label10;
         private Label lblDate;

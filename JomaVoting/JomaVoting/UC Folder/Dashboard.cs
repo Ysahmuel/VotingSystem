@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace JomaVoting
 {
@@ -20,6 +21,28 @@ namespace JomaVoting
             InitializeComponent();
             DisplayCurrentDateTime();  // Add date and time display logic
             CreateAndDisplayPlot();    // Existing plot logic
+            UpdateCandidateCount();     // Add candidate count display logic
+        }
+
+        private void UpdateCandidateCount()
+        {
+            int count = 0;
+            string query = "SELECT COUNT(*) FROM TBL_Candidate"; // Query to count candidates
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open(); // Open the connection
+                    count = (int)command.ExecuteScalar(); // Execute the query
+                }
+                lblCandidateCount.Text = count.ToString(); // Update the label
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching candidate count: {ex.Message}"); // Handle exceptions
+            }
         }
 
         private void DisplayCurrentDateTime()
@@ -86,7 +109,8 @@ namespace JomaVoting
             // Instead of assigning, update the existing plot
             formsPlot1.Plot.Clear(); // Clear existing plots if needed
             formsPlot1.Plot.Add.Bars(values); // Add bars to the FormsPlot control
-                                              // Adding text labels directly to the formsPlot1 instance
+
+            // Adding text labels directly to the formsPlot1 instance
             for (int i = 0; i < values.Length; i++)
             {
                 formsPlot1.Plot.Add.Text(barLabels[i], i, values[i] + 1); // Add text to the formsPlot
@@ -99,7 +123,6 @@ namespace JomaVoting
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
