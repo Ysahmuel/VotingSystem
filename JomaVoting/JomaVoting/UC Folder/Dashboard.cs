@@ -22,6 +22,7 @@ namespace JomaVoting
             DisplayCurrentDateTime();  // Add date and time display logic
             CreateAndDisplayPlot();    // Existing plot logic
             UpdateCandidateCount();     // Add candidate count display logic
+            UpdateVoterCount();
         }
 
         private void UpdateCandidateCount()
@@ -42,6 +43,26 @@ namespace JomaVoting
             catch (Exception ex)
             {
                 MessageBox.Show($"Error fetching candidate count: {ex.Message}"); // Handle exceptions
+            }
+        }
+        private void UpdateVoterCount()
+        {
+            int count = 0;
+            string query = "SELECT COUNT(*) FROM TBL_Voter"; // Query to count candidates
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open(); // Open the connection
+                    count = (int)command.ExecuteScalar(); // Execute the query
+                }
+                lblVoterCount.Text = count.ToString(); // Update the label
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching voter count: {ex.Message}"); // Handle exceptions
             }
         }
 

@@ -32,7 +32,7 @@
             label6 = new Label();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
+            lblVoterCount = new Label();
             label4 = new Label();
             label5 = new Label();
             label7 = new Label();
@@ -86,18 +86,18 @@
             label2.TabIndex = 6;
             label2.Text = "Registered Voters";
             // 
-            // label3
+            // lblVoterCount
             // 
-            label3.BackColor = SystemColors.ButtonFace;
-            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Image = Properties.Resources.user__1_;
-            label3.ImageAlign = ContentAlignment.MiddleLeft;
-            label3.Location = new Point(89, 121);
-            label3.Name = "label3";
-            label3.Size = new Size(123, 71);
-            label3.TabIndex = 7;
-            label3.Text = "0";
-            label3.TextAlign = ContentAlignment.MiddleRight;
+            lblVoterCount.BackColor = SystemColors.ButtonFace;
+            lblVoterCount.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVoterCount.Image = Properties.Resources.user__1_;
+            lblVoterCount.ImageAlign = ContentAlignment.MiddleLeft;
+            lblVoterCount.Location = new Point(89, 121);
+            lblVoterCount.Name = "lblVoterCount";
+            lblVoterCount.Size = new Size(123, 71);
+            lblVoterCount.TabIndex = 7;
+            lblVoterCount.Text = "0";
+            lblVoterCount.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -206,7 +206,7 @@
             Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(lblVoterCount);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(label6);
@@ -223,7 +223,7 @@
         private Label label6;
         private Label label1;
         private Label label2;
-        private Label label3;
+        private Label lblVoterCount;
         private Label label4;
         private Label label5;
         private Label label7;
