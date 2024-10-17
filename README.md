@@ -1,4 +1,6 @@
 JomaRead
+![jomapic](https://github.com/user-attachments/assets/1bbe0cab-e2dc-44a5-91c2-d848fd75b77e)
+
 
 Current working (Voter User Interface & Database)
 
