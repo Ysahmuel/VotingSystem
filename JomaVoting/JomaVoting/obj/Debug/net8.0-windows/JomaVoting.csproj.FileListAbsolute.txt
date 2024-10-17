@@ -338,3 +338,4 @@ C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\n
 C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.pdb
 C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.genruntimeconfig.cache
 C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\ref\JomaVoting.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.UC_Folder.CandidateProfile.resources

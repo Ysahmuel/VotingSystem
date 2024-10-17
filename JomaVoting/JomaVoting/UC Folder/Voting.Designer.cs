@@ -28,57 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            checkBox1 = new CheckBox();
+            panel1 = new Panel();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelContainer = new FlowLayoutPanel();
+            panel2 = new Panel();
+            btnVote = new Button();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // panel1
             // 
-            pictureBox1.Location = new Point(70, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(183, 148);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(26, 76);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(18, 17);
-            checkBox1.TabIndex = 1;
-            checkBox1.UseVisualStyleBackColor = true;
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(923, 72);
+            panel1.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(277, 45);
+            label1.BackColor = Color.White;
+            label1.ForeColor = SystemColors.ControlText;
+            label1.Location = new Point(412, 26);
             label1.Name = "label1";
-            label1.Size = new Size(121, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Candidate Name";
+            label1.Size = new Size(98, 20);
+            label1.TabIndex = 3;
+            label1.Text = "2024 Election";
+            // 
+            // panelContainer
+            // 
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 72);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(923, 445);
+            panelContainer.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnVote);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 470);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(923, 47);
+            panel2.TabIndex = 5;
+            // 
+            // btnVote
+            // 
+            btnVote.Location = new Point(400, 3);
+            btnVote.Name = "btnVote";
+            btnVote.Size = new Size(101, 41);
+            btnVote.TabIndex = 0;
+            btnVote.Text = "Vote";
+            btnVote.UseVisualStyleBackColor = true;
+            btnVote.Click += btnVote_Click;
             // 
             // Voting
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(label1);
-            Controls.Add(checkBox1);
-            Controls.Add(pictureBox1);
+            Controls.Add(panel2);
+            Controls.Add(panelContainer);
+            Controls.Add(panel1);
             Name = "Voting";
-            Size = new Size(530, 181);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Size = new Size(923, 517);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private CheckBox checkBox1;
+        private Panel panel1;
         private Label label1;
+        private FlowLayoutPanel panelContainer;
+        private Panel panel2;
+        private Button btnVote;
     }
 }

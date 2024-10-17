@@ -1,2 +1,2 @@
-.vs/
-DatabaseConfig.cs
+git add .gitignore
+git commit -m "DatabaseConfig.cs"

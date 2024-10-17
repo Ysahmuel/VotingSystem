@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            Position = new DataGridViewTextBoxColumn();
-            Candidate = new DataGridViewTextBoxColumn();
-            Voter = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewTextBoxColumn();
-            Delete = new DataGridViewTextBoxColumn();
             textBox1 = new TextBox();
             label2 = new Label();
             label3 = new Label();
@@ -47,48 +42,14 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Position, Candidate, Voter, Edit, Delete });
             dataGridView1.Location = new Point(15, 87);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(774, 564);
             dataGridView1.TabIndex = 3;
-            // 
-            // Position
-            // 
-            Position.HeaderText = "Postion";
-            Position.MinimumWidth = 6;
-            Position.Name = "Position";
-            Position.Width = 125;
-            // 
-            // Candidate
-            // 
-            Candidate.HeaderText = "Candidate";
-            Candidate.MinimumWidth = 6;
-            Candidate.Name = "Candidate";
-            Candidate.Width = 125;
-            // 
-            // Voter
-            // 
-            Voter.HeaderText = "Voter";
-            Voter.MinimumWidth = 6;
-            Voter.Name = "Voter";
-            Voter.Width = 125;
-            // 
-            // Edit
-            // 
-            Edit.HeaderText = "Edit";
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.Width = 125;
-            // 
-            // Delete
-            // 
-            Delete.HeaderText = "Delete";
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.Width = 125;
             // 
             // textBox1
             // 
@@ -199,11 +160,6 @@
 
         #endregion
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Position;
-        private DataGridViewTextBoxColumn Candidate;
-        private DataGridViewTextBoxColumn Voter;
-        private DataGridViewTextBoxColumn Edit;
-        private DataGridViewTextBoxColumn Delete;
         private TextBox textBox1;
         private Label label2;
         private Label label3;

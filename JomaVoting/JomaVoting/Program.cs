@@ -15,8 +15,9 @@ namespace JomaVoting
             ApplicationConfiguration.Initialize();
 
             AdminHomari formari = new AdminHomari();
+            VoterHomari vormari = new VoterHomari();
 
-
+            Application.Run(vormari);
             Application.Run(formari);
         }
     }

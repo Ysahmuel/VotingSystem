@@ -10,6 +10,9 @@
     <Compile Update="Forms\AddVoter.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UC Folder\CandidateProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UC Folder\Candidates.cs">
       <SubType>UserControl</SubType>
     </Compile>

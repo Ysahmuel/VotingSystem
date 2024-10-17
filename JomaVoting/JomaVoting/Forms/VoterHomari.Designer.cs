@@ -147,6 +147,7 @@
             // 
             // pnlMain
             // 
+            pnlMain.BackColor = SystemColors.ButtonHighlight;
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(200, 52);
             pnlMain.Name = "pnlMain";

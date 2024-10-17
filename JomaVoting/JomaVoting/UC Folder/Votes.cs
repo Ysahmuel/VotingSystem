@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,37 @@ namespace JomaVoting
         public Votes()
         {
             InitializeComponent();
+            LoadVotesData();
+        }
+
+        private void LoadVotesData()
+        {
+            string query = @"
+                SELECT 
+                    Position,
+                    Candidate,
+                    Voter
+                FROM 
+                    TBL_Votes;
+                ";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        DataTable votesTable = new DataTable();
+                        adapter.Fill(votesTable);
+                        dataGridView1.DataSource = votesTable; // Bind the DataGridView to the data
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading votes data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
