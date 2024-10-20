@@ -15,24 +15,28 @@ namespace JomaVoting.UC_Folder
     public partial class CandidateProfile : UserControl
     {
         public int CandidateID { get; private set; }
+        public string PositionID { get; private set; }
         public bool IsChecked => checkBox1.Checked;
-        public event EventHandler<bool> CheckBoxChanged;
+        public event EventHandler CheckBoxChanged;
 
 
         public CandidateProfile()
         {
             InitializeComponent();
+          
         }
 
-        public void candidateProfile(int candidateID, string firstName, string middleInitial, string lastName)
+        public void candidateProfile(int candidateID, string position, string firstName, string middleInitial, string lastName)
         {
             this.CandidateID = candidateID;
-            lblCandidateID.Text = "Candidate ID: " + candidateID;
+            this.PositionID = position;
+            lblPosition.Text = "Position: " + position;
             lblCandidateName.Text = string.IsNullOrEmpty(middleInitial)
                 ? $"{firstName} {lastName}"
-                : $"Dr. {firstName} {middleInitial} {lastName}";
+                : $"{firstName} {middleInitial} {lastName}";
             pictureBox1.Image = GetImageFromDatabase(candidateID);
         }
+
 
         private Image GetImageFromDatabase(int candidateID)
         {
@@ -65,9 +69,30 @@ namespace JomaVoting.UC_Folder
             return null;
         }
 
+
+
+        public void EnableCheckbox()
+        {
+            checkBox1.CheckedChanged += CheckBoxChanged; // Resubscribe the event
+            checkBox1.Enabled = true; // Enable the checkbox
+        }
+
+        public void DisableCheckbox()
+    {
+        checkBox1.CheckedChanged -= CheckBoxChanged; // Unsubscribe the event
+        checkBox1.Enabled = false; // Disable the checkbox
+    }
+
+        public void SetCheckBoxState(bool isChecked)
+        {
+            checkBox1.Checked = isChecked;
+        }
+
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBoxChanged?.Invoke(this, checkBox1.Checked);
+            CheckBoxChanged?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }

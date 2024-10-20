@@ -34,7 +34,7 @@ namespace JomaVoting
                     {
                         DataTable positionTable = new DataTable();
                         adapter.Fill(positionTable);
-                        dataGridView1.DataSource = positionTable; // Bind the DataGridView to the data
+                        dataGridView1.DataSource = positionTable; 
                     }
                 }
             }
@@ -112,15 +112,13 @@ namespace JomaVoting
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            // Check if 'Edit' button was clicked
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int positionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["PositionID"].Value);
 
-                // Open the AddVoter form with the voterID for editing
                 AddPosition addPositionForm = new AddPosition(positionID);
-                addPositionForm.ShowDialog(); // Use ShowDialog if you want the form to be modal
-                LoadPositionData(); // Refresh data after editing
+                addPositionForm.ShowDialog(); 
+                LoadPositionData(); 
             }
             else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {

@@ -31,7 +31,7 @@
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
             lblCandidateName = new Label();
-            lblCandidateID = new Label();
+            lblPosition = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -64,21 +64,21 @@
             lblCandidateName.TabIndex = 2;
             lblCandidateName.Text = "Candidate Name";
             // 
-            // lblCandidateID
+            // lblPosition
             // 
-            lblCandidateID.AutoSize = true;
-            lblCandidateID.Location = new Point(313, 6);
-            lblCandidateID.Name = "lblCandidateID";
-            lblCandidateID.Size = new Size(92, 20);
-            lblCandidateID.TabIndex = 3;
-            lblCandidateID.Text = "CandidateID";
+            lblPosition.AutoSize = true;
+            lblPosition.Location = new Point(313, 6);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(92, 20);
+            lblPosition.TabIndex = 3;
+            lblPosition.Text = "CandidateID";
             // 
             // CandidateProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
-            Controls.Add(lblCandidateID);
+            Controls.Add(lblPosition);
             Controls.Add(lblCandidateName);
             Controls.Add(checkBox1);
             Controls.Add(pictureBox1);
@@ -94,6 +94,6 @@
         private PictureBox pictureBox1;
         private CheckBox checkBox1;
         private Label lblCandidateName;
-        private Label lblCandidateID;
+        private Label lblPosition;
     }
 }

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\uc folder\\candidateprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\uc folder\\candidateprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\databaseconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\databaseconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\forms\\voterhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\forms\\voterhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\uc folder\\voting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\uc folder\\voting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\uc folder\\voting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\uc folder\\voting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +30,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VoterHomari.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\VoterHomari.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\Forms\\VoterHomari.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\VoterHomari.cs [Design]",
-              "RelativeToolTip": "JomaVoting\\Forms\\VoterHomari.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "DatabaseConfig.cs",
+              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\DatabaseConfig.cs",
+              "RelativeDocumentMoniker": "JomaVoting\\DatabaseConfig.cs",
+              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\DatabaseConfig.cs",
+              "RelativeToolTip": "JomaVoting\\DatabaseConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T13:56:32.1Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-20T06:23:31.362Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CandidateProfile.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\CandidateProfile.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\UC Folder\\CandidateProfile.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\CandidateProfile.cs [Design]",
-              "RelativeToolTip": "JomaVoting\\UC Folder\\CandidateProfile.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "Voting.cs",
+              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Voting.cs",
+              "RelativeDocumentMoniker": "JomaVoting\\UC Folder\\Voting.cs",
+              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Voting.cs",
+              "RelativeToolTip": "JomaVoting\\UC Folder\\Voting.cs",
+              "ViewState": "AgIAACQBAAAAAAAAAAArwDcBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T13:55:23.184Z",
+              "WhenOpened": "2024-10-20T06:22:12.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Voting.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Voting.cs",
+              "RelativeDocumentMoniker": "JomaVoting\\UC Folder\\Voting.cs",
+              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Voting.cs [Design]",
+              "RelativeToolTip": "JomaVoting\\UC Folder\\Voting.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T06:17:25.246Z",
               "EditorCaption": " [Design]"
             }
           ]

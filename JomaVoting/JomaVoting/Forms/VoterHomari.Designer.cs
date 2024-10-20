@@ -147,6 +147,8 @@
             // 
             // pnlMain
             // 
+            pnlMain.AutoScroll = true;
+            pnlMain.AutoScrollMargin = new Size(0, 200);
             pnlMain.BackColor = SystemColors.ButtonHighlight;
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(200, 52);

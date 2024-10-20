@@ -30,9 +30,9 @@
         {
             panel1 = new Panel();
             label1 = new Label();
-            panelContainer = new FlowLayoutPanel();
             panel2 = new Panel();
             btnVote = new Button();
+            panelContainer = new FlowLayoutPanel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -43,7 +43,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(923, 72);
+            panel1.Size = new Size(902, 72);
             panel1.TabIndex = 3;
             // 
             // label1
@@ -57,43 +57,44 @@
             label1.TabIndex = 3;
             label1.Text = "2024 Election";
             // 
-            // panelContainer
-            // 
-            panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(0, 72);
-            panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(923, 445);
-            panelContainer.TabIndex = 4;
-            // 
             // panel2
             // 
             panel2.Controls.Add(btnVote);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 470);
+            panel2.Location = new Point(0, 485);
             panel2.Name = "panel2";
-            panel2.Size = new Size(923, 47);
+            panel2.Size = new Size(902, 32);
             panel2.TabIndex = 5;
             // 
             // btnVote
             // 
-            btnVote.Location = new Point(400, 3);
+            btnVote.Location = new Point(412, 0);
             btnVote.Name = "btnVote";
-            btnVote.Size = new Size(101, 41);
+            btnVote.Size = new Size(96, 29);
             btnVote.TabIndex = 0;
             btnVote.Text = "Vote";
             btnVote.UseVisualStyleBackColor = true;
             btnVote.Click += btnVote_Click;
+            // 
+            // panelContainer
+            // 
+            panelContainer.AutoScroll = true;
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 72);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(902, 413);
+            panelContainer.TabIndex = 6;
             // 
             // Voting
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(panel2);
             Controls.Add(panelContainer);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Voting";
-            Size = new Size(923, 517);
+            Size = new Size(902, 517);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -104,8 +105,8 @@
 
         private Panel panel1;
         private Label label1;
-        private FlowLayoutPanel panelContainer;
         private Panel panel2;
         private Button btnVote;
+        private FlowLayoutPanel panelContainer;
     }
 }
