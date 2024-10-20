@@ -90,8 +90,8 @@
             Controls.Add(label2);
             Controls.Add(txtPosition);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "AddPosition";
-            Text = "AddPosition";
             ResumeLayout(false);
             PerformLayout();
         }

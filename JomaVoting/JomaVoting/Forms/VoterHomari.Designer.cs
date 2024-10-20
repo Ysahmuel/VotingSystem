@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
             btnExit = new Button();
@@ -38,28 +39,43 @@
             panel3 = new Panel();
             pnlMain = new Panel();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightSlateGray;
+            panel1.BackColor = Color.FromArgb(64, 64, 64);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(899, 52);
+            panel1.Size = new Size(1257, 52);
             panel1.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Image = Properties.Resources.panda__1_;
+            pictureBox1.Location = new Point(3, 5);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(38, 43);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Sans Serif Collection", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(41, 16);
             label1.Name = "label1";
-            label1.Size = new Size(86, 44);
-            label1.TabIndex = 0;
+            label1.Size = new Size(94, 22);
+            label1.TabIndex = 2;
             label1.Text = "JomaVote";
             // 
             // panel2
@@ -74,7 +90,7 @@
             panel2.Location = new Point(0, 52);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 427);
+            panel2.Size = new Size(200, 721);
             panel2.TabIndex = 2;
             // 
             // btnExit
@@ -83,7 +99,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = SystemColors.ControlText;
-            btnExit.Location = new Point(0, 385);
+            btnExit.Location = new Point(0, 679);
             btnExit.Margin = new Padding(3, 4, 3, 4);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(200, 42);
@@ -94,6 +110,7 @@
             // btnVoting
             // 
             btnVoting.Dock = DockStyle.Top;
+            btnVoting.FlatAppearance.BorderSize = 0;
             btnVoting.FlatStyle = FlatStyle.Flat;
             btnVoting.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVoting.ForeColor = SystemColors.ControlText;
@@ -109,6 +126,7 @@
             // btnPartyList
             // 
             btnPartyList.Dock = DockStyle.Top;
+            btnPartyList.FlatAppearance.BorderSize = 0;
             btnPartyList.FlatStyle = FlatStyle.Flat;
             btnPartyList.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPartyList.ForeColor = SystemColors.ControlText;
@@ -124,6 +142,7 @@
             // btnHome
             // 
             btnHome.Dock = DockStyle.Top;
+            btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHome.ForeColor = SystemColors.ControlText;
@@ -153,21 +172,24 @@
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(200, 52);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(699, 427);
+            pnlMain.Size = new Size(1057, 721);
             pnlMain.TabIndex = 3;
             // 
             // VoterHomari
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 479);
+            ClientSize = new Size(1257, 773);
             Controls.Add(pnlMain);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "VoterHomari";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -175,13 +197,14 @@
         #endregion
 
         private Panel panel1;
-        private Label label1;
         private Panel panel2;
         private Button btnExit;
         private Button btnVoting;
         private Button btnPartyList;
         private Button btnHome;
-        private Panel panel3;
         private Panel pnlMain;
+        private Panel panel3;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }

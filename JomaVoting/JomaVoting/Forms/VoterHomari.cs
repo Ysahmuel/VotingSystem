@@ -14,7 +14,11 @@ namespace JomaVoting
 
             InitializeComponent();
         }
-
+        public VoterHomari(string username)
+        {
+            InitializeComponent();
+            
+        }
         private void LoadPage(UserControl page)
         {
             pnlMain.Controls.Clear(); // Clear the panel
@@ -35,6 +39,11 @@ namespace JomaVoting
         private void btnVoting_Click(object sender, EventArgs e)
         {
             LoadPage(new JomaVoting.Voting());
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

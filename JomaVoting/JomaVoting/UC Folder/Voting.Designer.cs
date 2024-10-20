@@ -43,17 +43,18 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(902, 72);
+            panel1.Size = new Size(1057, 72);
             panel1.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
+            label1.Font = new Font("Tahoma", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(412, 26);
+            label1.Location = new Point(412, 11);
             label1.Name = "label1";
-            label1.Size = new Size(98, 20);
+            label1.Size = new Size(252, 41);
             label1.TabIndex = 3;
             label1.Text = "2024 Election";
             // 
@@ -61,9 +62,9 @@
             // 
             panel2.Controls.Add(btnVote);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 485);
+            panel2.Location = new Point(0, 689);
             panel2.Name = "panel2";
-            panel2.Size = new Size(902, 32);
+            panel2.Size = new Size(1057, 32);
             panel2.TabIndex = 5;
             // 
             // btnVote
@@ -82,7 +83,7 @@
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 72);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(902, 413);
+            panelContainer.Size = new Size(1057, 617);
             panelContainer.TabIndex = 6;
             // 
             // Voting
@@ -94,7 +95,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Voting";
-            Size = new Size(902, 517);
+            Size = new Size(1057, 721);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

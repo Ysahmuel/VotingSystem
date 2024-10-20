@@ -8,7 +8,7 @@ namespace JomaVoting
 {
     public static class DatabaseConfig
     {
-        private static readonly string connectionString = "Data =(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoteDB.mdf;Integrated Security=True";
+        private static readonly string connectionString = "Data Source =(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\JomaVoteDB.mdf;Integrated Security=True";
 
         public static string ConnectionString
         {

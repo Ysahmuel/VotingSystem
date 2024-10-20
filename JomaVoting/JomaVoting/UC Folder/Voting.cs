@@ -79,8 +79,6 @@ namespace JomaVoting
             }
         }
 
-
-
         private void DisplayCandidate(List<Candidate> candidateList)
         {
             panelContainer.Controls.Clear();
@@ -89,11 +87,10 @@ namespace JomaVoting
 
             foreach (var group in groupedCandidates)
             {
-                // Retrieve the maximum vote for this position
-                string positionID = group.Key;
-                int maxVotes = positionMaxVotes[positionID]; // Get max votes from the dictionary
 
-                // Create a position label with maximum vote information
+                string positionID = group.Key;
+                int maxVotes = positionMaxVotes[positionID];
+
                 Label positionLabel = new Label();
                 positionLabel.Text = $"{GetPositionDescription(positionID)} (Only {maxVotes} votes allowed)";
                 positionLabel.Font = new Font("Arial", 12, FontStyle.Bold);
@@ -137,8 +134,6 @@ namespace JomaVoting
 
             return string.IsNullOrEmpty(positionDescription) ? "Unknown Position" : positionDescription;
         }
-
-
 
 
         private void AddNewPanel(int candidateID, string position, string firstName, string middleInitial, string lastName)
@@ -220,17 +215,6 @@ namespace JomaVoting
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
         private CandidateProfile GetCandidateProfileControl(int candidateID)
         {
             return candidateProfiles.FirstOrDefault(profile => profile.CandidateID == candidateID);
@@ -267,9 +251,6 @@ namespace JomaVoting
             }
             return null; 
         }
-
-
-
 
 
         private void SaveVotes(List<int> candidateIDs)

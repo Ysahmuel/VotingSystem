@@ -148,8 +148,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "AddVoter";
-            Text = "AddVotercs";
             ResumeLayout(false);
             PerformLayout();
         }
