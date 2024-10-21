@@ -2,7 +2,8 @@
 
 ## JomaREAD
 
-* Need to Work On 
+* Need to Work On
+  
   -USER INTERFACE(maybe)
   -Home User (what should put?)
   -Home PartyList(not working yet)
