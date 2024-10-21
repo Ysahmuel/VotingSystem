@@ -2,7 +2,10 @@
 
 ## JomaREAD
 
-Current working (Voter User Interface & Database)
+* Need to Work On 
+-USER INTERFACE(maybe)
+-Home User (what should put?)
+-Home PartyList(not working yet)
 
 Voting system for Advanced Database System
 
@@ -11,13 +14,16 @@ languages: C#, SQL
 * GUI (on progress)
   - Admin Home (Added)
   - User Home (Added)
-  - Log In (Not yet)
+  - Log In (Added)
   - Register (Not yet)
   - Admin Dashboard UC (Added)
   - Admin Votes UC (Added)
   - Admin Voters UC (Added)
   - Admin Position UC (Added)
   - Admin Candidates UC (Added)
+  - User Home (Added)
+  - User PartyList (Added)
+  - User Voting (Added)
   - (Updated list)
 
     
