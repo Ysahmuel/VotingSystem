@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             label6 = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -41,18 +40,8 @@
             label10 = new Label();
             lblDate = new Label();
             lblTime = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             SuspendLayout();
-            // 
-            // formsPlot1
-            // 
-            formsPlot1.BackColor = SystemColors.ControlDarkDark;
-            formsPlot1.DisplayScale = 1.25F;
-            formsPlot1.ForeColor = Color.White;
-            formsPlot1.Location = new Point(235, 218);
-            formsPlot1.Margin = new Padding(3, 2, 3, 2);
-            formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(673, 274);
-            formsPlot1.TabIndex = 3;
             // 
             // label6
             // 
@@ -60,7 +49,7 @@
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(517, 175);
             label6.Name = "label6";
-            label6.Size = new Size(183, 20);
+            label6.Size = new Size(231, 25);
             label6.TabIndex = 4;
             label6.Text = "Ranking of Each Positions";
             // 
@@ -70,7 +59,7 @@
             label1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(150, 37);
+            label1.Size = new Size(188, 46);
             label1.TabIndex = 5;
             label1.Text = "Dashboard";
             // 
@@ -180,7 +169,7 @@
             lblDate.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDate.Location = new Point(733, 23);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(45, 20);
+            lblDate.Size = new Size(58, 25);
             lblDate.TabIndex = 14;
             lblDate.Text = "Date:";
             // 
@@ -190,14 +179,24 @@
             lblTime.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTime.Location = new Point(783, 49);
             lblTime.Name = "lblTime";
-            lblTime.Size = new Size(46, 20);
+            lblTime.Size = new Size(59, 25);
             lblTime.TabIndex = 15;
             lblTime.Text = "Time:";
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Location = new Point(235, 218);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(819, 487);
+            flowLayoutPanel1.TabIndex = 16;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // Dashboard
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(lblTime);
             Controls.Add(lblDate);
             Controls.Add(label10);
@@ -210,16 +209,14 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(label6);
-            Controls.Add(formsPlot1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Dashboard";
-            Size = new Size(923, 517);
+            Size = new Size(1057, 721);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ScottPlot.WinForms.FormsPlot formsPlot1;
         private Label label6;
         private Label label1;
         private Label label2;
@@ -232,5 +229,6 @@
         private Label label10;
         private Label lblDate;
         private Label lblTime;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

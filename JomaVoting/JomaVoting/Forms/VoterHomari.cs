@@ -1,6 +1,4 @@
-using ScottPlot;
-using ScottPlot.TickGenerators;
-using SkiaSharp;
+
 using System.Drawing;
 
 namespace JomaVoting

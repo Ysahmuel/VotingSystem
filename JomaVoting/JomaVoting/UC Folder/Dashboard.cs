@@ -1,7 +1,4 @@
-﻿using ScottPlot.TickGenerators;
-using ScottPlot;
-using SkiaSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+using System.Windows.Forms.DataVisualization.Charting;
+
 namespace JomaVoting
 {
     public partial class Dashboard : UserControl
@@ -19,17 +18,17 @@ namespace JomaVoting
         public Dashboard()
         {
             InitializeComponent();
-            DisplayCurrentDateTime(); 
-            CreateAndDisplayPlot();    
-            UpdateCandidateCount();    
+            DisplayCurrentDateTime();
+            UpdateCandidateCount();
             UpdateVoterCount();
+            DisplayLeadingCandidatesCharts();
         }
 
         private void UpdateCandidateCount()
         {
             int count = 0;
             // SQL query to count the total number of candidates in the TBL_Candidate table
-            string query = "SELECT COUNT(*) FROM TBL_Candidate"; 
+            string query = "SELECT COUNT(*) FROM TBL_Candidate";
 
             try
             {
@@ -37,13 +36,13 @@ namespace JomaVoting
                 {
                     SqlCommand command = new SqlCommand(query, connection);
                     connection.Open();
-                    count = (int)command.ExecuteScalar(); 
+                    count = (int)command.ExecuteScalar();
                 }
-                lblCandidateCount.Text = count.ToString(); 
+                lblCandidateCount.Text = count.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error fetching candidate count: {ex.Message}"); 
+                MessageBox.Show($"Error fetching candidate count: {ex.Message}");
             }
         }
 
@@ -51,17 +50,17 @@ namespace JomaVoting
         {
             int count = 0;
             // SQL query to count the total number of voters in the TBL_Voter table
-            string query = "SELECT COUNT(*) FROM TBL_Voter"; 
+            string query = "SELECT COUNT(*) FROM TBL_Voter";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     SqlCommand command = new SqlCommand(query, connection);
-                    connection.Open(); 
-                    count = (int)command.ExecuteScalar(); 
+                    connection.Open();
+                    count = (int)command.ExecuteScalar();
                 }
-                lblVoterCount.Text = count.ToString(); 
+                lblVoterCount.Text = count.ToString();
             }
             catch (Exception ex)
             {
@@ -78,73 +77,123 @@ namespace JomaVoting
             string currentTime = now.ToString("hh:mm tt");
             lblTime.Text = $"Time: {currentTime}";
         }
-
-        private void CreateAndDisplayPlot()
+        private void DisplayLeadingCandidatesCharts()
         {
-            // Create a new ScottPlot.Plot
-            var myPlot = new ScottPlot.Plot();
+            // SQL query to count votes for each candidate by position
+            string query = @"
+    SELECT Position, Candidate, COUNT(*) AS VoteCount
+    FROM TBL_Votes
+    GROUP BY Position, Candidate
+    HAVING COUNT(*) > 0
+    ORDER BY Position, VoteCount DESC";
 
-            // Create a bar plot with specified values
-            double[] values = { 5, 10, 7, 13, 25, 60 };
-            string[] barLabels = { "pasas", "panda", "macgaylor", "diddy", "bingoball", "fucku" }; // Define labels for each bar
-            myPlot.Add.Bars(values);
-
-            // Loop through each bar to add labels
-            for (int i = 0; i < values.Length; i++)
+            try
             {
-                // Place labels at the center of each bar
-                myPlot.Add.Text(barLabels[i], i, values[i] + 1); // Position slightly above the bar
-            }
-
-            myPlot.Axes.Margins(bottom: 0); // Set margins
-
-            // Create a tick for each bar with long titles
-            Tick[] ticks =
-            {
-                new Tick(0, "First Long Title"),
-                new Tick(1, "Second Long Title"),
-                new Tick(2, "Third Long Title"),
-                new Tick(3, "Fourth Long Title"),
-                new Tick(4, "Fifth Long Title"),
-                new Tick(5, "Sixth Long Title")
-            };
-
-            // Assign custom tick labels to the bottom axis
-            myPlot.Axes.Bottom.TickGenerator = new NumericManual(ticks);
-            myPlot.Axes.Bottom.TickLabelStyle.Rotation = 45; // Rotate labels for better visibility
-            myPlot.Axes.Bottom.TickLabelStyle.Alignment = ScottPlot.Alignment.MiddleLeft; // Align labels
-
-            // Determine the width of the largest tick label
-            float largestLabelWidth = 0;
-            using (SKPaint paint = new SKPaint())
-            {
-                foreach (Tick tick in ticks)
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
-                    PixelSize size = myPlot.Axes.Bottom.TickLabelStyle.Measure(tick.Label, paint).Size;
-                    largestLabelWidth = Math.Max(largestLabelWidth, size.Width);
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    var positionData = new Dictionary<string, List<(string Candidate, int VoteCount)>>();
+
+                    // Read the data into a dictionary
+                    while (reader.Read())
+                    {
+                        string position = reader["Position"].ToString();
+                        string candidate = reader["Candidate"].ToString();
+                        int voteCount = (int)reader["VoteCount"];
+
+                        if (!positionData.ContainsKey(position))
+                        {
+                            positionData[position] = new List<(string Candidate, int VoteCount)>();
+                        }
+                        positionData[position].Add((candidate, voteCount));
+                    }
+
+                    // Check if position data is populated
+                    if (positionData.Count == 0)
+                    {
+                        MessageBox.Show("No data available for leading candidates.");
+                        return; // Exit if no data
+                    }
+
+                    // Create a chart for each position
+                    foreach (var position in positionData.Keys)
+                    {
+                        Chart chart = CreateChartForPosition(position);
+
+                        // Track used colors to ensure uniqueness
+                        HashSet<Color> usedColors = new HashSet<Color>();
+                        Random random = new Random();
+
+                        // Enable and configure the legend
+                        chart.Legends.Add("Legend1");
+                        chart.Legends["Legend1"].Docking = Docking.Left; // Place the legend on the left side
+                        chart.Legends["Legend1"].Title = "Candidates";   // Optional: Title for the legend
+
+                        // Populate the chart with candidates and their vote counts
+                        foreach (var (candidate, voteCount) in positionData[position])
+                        {
+                            var series = chart.Series.Add(candidate);
+                            series.ChartType = SeriesChartType.Column; // Keep vertical bars
+                            series.Points.AddXY(candidate, voteCount);
+
+                            // Assign a unique color to each candidate
+                            Color candidateColor;
+                            do
+                            {
+                                // Generate a random color
+                                candidateColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+                            }
+                            while (usedColors.Contains(candidateColor)); // Ensure the color isn't already used
+
+                            series.Color = candidateColor; // Assign the color
+                            series.IsValueShownAsLabel = true; // Show value labels on bars
+
+                            // Add legend item for the candidate
+                            series.Legend = "Legend1"; // Link the series to the legend
+                        }
+
+                        // Set chart properties
+                        chart.ChartAreas[0].AxisX.Title = "Leading Candidate"; // X-axis is candidates
+                        chart.ChartAreas[0].AxisY.Title = "Vote Count";  // Y-axis is vote count
+                        chart.Titles.Add($"{position}");       // Set title for the chart
+                    }
                 }
             }
-
-            // Ensure axis panels do not get smaller than the largest label
-            myPlot.Axes.Bottom.MinimumSize = largestLabelWidth;
-
-            // Instead of assigning, update the existing plot
-            formsPlot1.Plot.Clear(); // Clear existing plots if needed
-            formsPlot1.Plot.Add.Bars(values); // Add bars to the FormsPlot control
-
-            // Adding text labels directly to the formsPlot1 instance
-            for (int i = 0; i < values.Length; i++)
+            catch (Exception ex)
             {
-                formsPlot1.Plot.Add.Text(barLabels[i], i, values[i] + 1); // Add text to the formsPlot
+                MessageBox.Show($"Error fetching leading candidates: {ex.Message}");
             }
-            formsPlot1.Refresh(); // Refresh to show the updated plot
-
-            // Optionally save the plot as an image
-            myPlot.SavePng("demo.png", 400, 300); // Save the plot image
         }
 
-        private void label3_Click(object sender, EventArgs e)
+
+        private Chart CreateChartForPosition(string position)
         {
+            Chart chart = new Chart();
+            chart.Dock = DockStyle.Top; // Dock the chart to fill horizontally if needed
+            chart.Height = 400; // Set height as needed
+            chart.Width = 800;  // Increase the width for a wider chart
+
+            // Add a ChartArea
+            ChartArea chartArea = new ChartArea();
+            chart.ChartAreas.Add(chartArea);
+
+            // Add the chart to the FlowLayoutPanel
+            flowLayoutPanel1.Controls.Add(chart); // Ensure flowLayoutPanel1 is defined in your form
+
+            return chart;
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

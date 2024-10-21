@@ -50,21 +50,13 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "ScottPlot": {
-              "target": "Package",
-              "version": "[5.0.39, )"
-            },
-            "ScottPlot.WPF": {
-              "target": "Package",
-              "version": "[5.0.39, )"
-            },
-            "ScottPlot.WinForms": {
-              "target": "Package",
-              "version": "[5.0.39, )"
-            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"
+            },
+            "WinForms.DataVisualization": {
+              "target": "Package",
+              "version": "[1.9.2, )"
             }
           },
           "imports": [

@@ -42,38 +42,8 @@ C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\D
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Positions.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Voters.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Votes.resources
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.GLControl.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\ScottPlot.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\ScottPlot.WinForms.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\SkiaSharp.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\SkiaSharp.Views.Desktop.Common.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\SkiaSharp.Views.WindowsForms.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libSkiaSharp.so
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libSkiaSharp.so
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\linux-musl-x64\native\libSkiaSharp.so
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libSkiaSharp.so
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\osx\native\libSkiaSharp.dylib
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.csproj.AssemblyReference.cache
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.csproj.Up2Date
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Compute.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Core.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\GLWpfControl.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Graphics.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Input.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Mathematics.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.OpenAL.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Windowing.Common.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Windowing.Desktop.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\OpenTK.Windowing.GraphicsLibraryFramework.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\ScottPlot.WPF.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\SkiaSharp.Views.WPF.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libglfw.so.3.3
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libglfw.3.dylib
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x64\native\glfw3.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\runtimes\win-x86\native\glfw3.dll
 C:\Users\user\Documents\Ysahmuel\BSIT301C 3y1term 2024-2025\[1] Files from classmates\VotingSystem-main\VotingSystem-main\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.exe
 C:\Users\user\Documents\Ysahmuel\BSIT301C 3y1term 2024-2025\[1] Files from classmates\VotingSystem-main\VotingSystem-main\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.deps.json
 C:\Users\user\Documents\Ysahmuel\BSIT301C 3y1term 2024-2025\[1] Files from classmates\VotingSystem-main\VotingSystem-main\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.runtimeconfig.json
@@ -340,3 +310,5 @@ C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\n
 C:\Users\Student\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\ref\JomaVoting.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.UC_Folder.CandidateProfile.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.LoginForm.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll

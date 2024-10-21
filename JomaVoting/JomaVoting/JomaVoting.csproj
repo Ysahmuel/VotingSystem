@@ -9,10 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ScottPlot" Version="5.0.39" />
-    <PackageReference Include="ScottPlot.WinForms" Version="5.0.39" />
-    <PackageReference Include="ScottPlot.WPF" Version="5.0.39" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 
   <ItemGroup>
