@@ -22,7 +22,6 @@ namespace JomaVoting
             AddStatusColumns();
         }
 
-
         private void btnAddVoter_Click(object sender, EventArgs e)
         {
             AddVoter addVoter = new AddVoter();
@@ -31,6 +30,7 @@ namespace JomaVoting
 
         private void LoadVotersData()
         {
+            // SQL query to select all necessary voter details (ID, FirstName, MiddleInitial, LastName, Section)
             string query = "SELECT VoterID, FirstName, MiddleInitial, LastName, Section FROM TBL_Voter";
 
             try
@@ -42,7 +42,7 @@ namespace JomaVoting
                     {
                         DataTable voterTable = new DataTable();
                         adapter.Fill(voterTable);
-                        dataGridView1.DataSource = voterTable; // Bind the DataGridView to the data
+                        dataGridView1.DataSource = voterTable;
                     }
                 }
             }
@@ -51,6 +51,7 @@ namespace JomaVoting
                 MessageBox.Show("An error occurred while loading voter data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void AddStatusColumns()
         {
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
@@ -79,6 +80,7 @@ namespace JomaVoting
             DialogResult result = MessageBox.Show("Are you sure you want to delete this voter?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                // SQL query to delete the voter record by VoterID
                 string query = "DELETE FROM TBL_Voter WHERE VoterID = @VoterID";
 
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -113,15 +115,13 @@ namespace JomaVoting
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            // Check if 'Edit' button was clicked
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int voterID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["VoterID"].Value);
 
-                // Open the AddVoter form with the voterID for editing
                 AddVoter addVoterForm = new AddVoter(voterID);
-                addVoterForm.ShowDialog(); // Use ShowDialog if you want the form to be modal
-                LoadVotersData(); // Refresh data after editing
+                addVoterForm.ShowDialog(); 
+                LoadVotersData(); 
             }
             else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {

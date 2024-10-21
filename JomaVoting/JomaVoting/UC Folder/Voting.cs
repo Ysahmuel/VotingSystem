@@ -29,9 +29,10 @@ namespace JomaVoting
 
         private void RetrieveAndDisplayCandidateData()
         {
-            string query = "SELECT c.CandidateID, c.firstName, c.middleInitial, c.lastName, c.PositionID, p.MaximumVote " +
+            // SQL query to retrieve candidate data and their respective maximum votes for each position
+            string query = "SELECT c.CandidateID, c.firstName, c.middleInitial, c.lastName, c.Position, p.MaximumVote " +
                            "FROM TBL_Candidate c " +
-                           "JOIN TBL_Position p ON c.PositionID = p.PositionDescription";
+                           "JOIN TBL_Position p ON c.Position = p.PositionDescription";// Joining candidate and position tables based on position description
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
             {
@@ -48,27 +49,26 @@ namespace JomaVoting
                         while (reader.Read())
                         {
                             int candidateID = Convert.ToInt32(reader["CandidateID"]);
-                            string positionID = reader["PositionID"].ToString().Trim();
+                            string position = reader["Position"].ToString().Trim();
                             string firstName = reader["firstName"].ToString().Trim();
                             string middleInitial = reader["middleInitial"].ToString().Trim();
                             string lastName = reader["lastName"].ToString().Trim();
                             int maximumVote = Convert.ToInt32(reader["MaximumVote"]);
 
-                            if (!positionMaxVotes.ContainsKey(positionID))
+                            if (!positionMaxVotes.ContainsKey(position))
                             {
-                                positionMaxVotes[positionID] = maximumVote;
+                                positionMaxVotes[position] = maximumVote;
                             }
 
                             candidateList.Add(new Candidate
                             {
                                 CandidateID = candidateID,
-                                PositionID = positionID,
+                                Position = position,
                                 FirstName = firstName,
                                 MiddleInitial = middleInitial,
                                 LastName = lastName
                             });
                         }
-
                         DisplayCandidate(candidateList);
                     }
                     catch (Exception ex)
@@ -83,32 +83,32 @@ namespace JomaVoting
         {
             panelContainer.Controls.Clear();
 
-            var groupedCandidates = candidateList.GroupBy(c => c.PositionID);
+            var groupedCandidates = candidateList.GroupBy(c => c.Position);
 
             foreach (var group in groupedCandidates)
             {
 
-                string positionID = group.Key;
-                int maxVotes = positionMaxVotes[positionID];
+                string position = group.Key;
+                int maxVotes = positionMaxVotes[position];
 
                 Label positionLabel = new Label();
-                positionLabel.Text = $"{GetPositionDescription(positionID)} (Only {maxVotes} votes allowed)";
+                positionLabel.Text = $"{GetPositionDescription(position)} (Only {maxVotes} votes allowed)";
                 positionLabel.Font = new Font("Arial", 12, FontStyle.Bold);
                 positionLabel.AutoSize = true;
                 panelContainer.Controls.Add(positionLabel);
 
                 foreach (var candidate in group)
                 {
-                    AddNewPanel(candidate.CandidateID, candidate.PositionID, candidate.FirstName, candidate.MiddleInitial, candidate.LastName);
+                    AddNewPanel(candidate.CandidateID, candidate.Position, candidate.FirstName, candidate.MiddleInitial, candidate.LastName);
                 }
             }
         }
-
 
         private string GetPositionDescription(string positionID)
         {
             string positionDescription = string.Empty;
 
+            // SQL query to get position description based on position ID
             string query = "SELECT PositionDescription FROM TBL_Position WHERE PositionDescription = @PositionDescription";
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -135,7 +135,6 @@ namespace JomaVoting
             return string.IsNullOrEmpty(positionDescription) ? "Unknown Position" : positionDescription;
         }
 
-
         private void AddNewPanel(int candidateID, string position, string firstName, string middleInitial, string lastName)
         {
             CandidateProfile newProfile = new CandidateProfile();
@@ -143,51 +142,48 @@ namespace JomaVoting
             newProfile.CheckBoxChanged += (sender, e) => OnCandidateCheckedChanged(candidateID, newProfile.IsChecked);
             panelContainer.Controls.Add(newProfile);
             candidateProfiles.Add(newProfile);
-
         }
+
         private void OnCandidateCheckedChanged(int candidateID, bool isChecked)
         {
             Candidate candidate = GetCandidateDetails(candidateID);
 
-            if (candidate == null || string.IsNullOrEmpty(candidate.PositionID))
+            if (candidate == null || string.IsNullOrEmpty(candidate.Position))
             {
                 MessageBox.Show("Invalid candidate or position data.");
                 return;
             }
 
-            string positionID = candidate.PositionID;
+            string position = candidate.Position;
 
-            int currentSelected = positionSelectedCounts.ContainsKey(positionID) ? positionSelectedCounts[positionID] : 0;
-            int maxAllowed = positionMaxVotes[positionID];
+            int currentSelected = positionSelectedCounts.ContainsKey(position) ? positionSelectedCounts[position] : 0;
+            int maxAllowed = positionMaxVotes[position];
 
             if (isChecked)
             {
-               
-
-
-                positionSelectedCounts[positionID] = currentSelected + 1;
+                positionSelectedCounts[position] = currentSelected + 1;
                 selectedCandidateIDs.Add(candidateID);
 
-                if (positionSelectedCounts[positionID] == maxAllowed)
+                if (positionSelectedCounts[position] == maxAllowed)
                 {
-                    DisableAllOtherCheckboxesForPosition(positionID, candidateID); 
+                    DisableAllOtherCheckboxesForPosition(position, candidateID); 
                 }
             }
             else
             {
-                positionSelectedCounts[positionID]--;
+                positionSelectedCounts[position]--;
                 selectedCandidateIDs.Remove(candidateID);
 
-                if (positionSelectedCounts[positionID] <= 0)
+                if (positionSelectedCounts[position] <= 0)
                 {
-                    positionSelectedCounts[positionID] = 0; 
-                    EnableAllCheckboxesForPosition(positionID); 
+                    positionSelectedCounts[position] = 0; 
+                    EnableAllCheckboxesForPosition(position); 
                 }
                 else
                 {
-                    if (positionSelectedCounts[positionID] < maxAllowed)
+                    if (positionSelectedCounts[position] < maxAllowed)
                     {
-                        EnableAllCheckboxesForPosition(positionID); 
+                        EnableAllCheckboxesForPosition(position); 
                     }
                 }
             }
@@ -217,9 +213,10 @@ namespace JomaVoting
 
         private Candidate GetCandidateDetails(int candidateID)
         {
-            string query = "SELECT c.PositionID, p.PositionDescription, CONCAT(c.FirstName, ' ', c.MiddleInitial, ' ', c.LastName) AS FullName " +
+            // SQL query to retrieve detailed candidate information by CandidateID
+            string query = "SELECT c.Position, p.PositionDescription, CONCAT(c.FirstName, ' ', c.MiddleInitial, ' ', c.LastName) AS FullName " +
                            "FROM TBL_Candidate c " +
-                           "JOIN TBL_Position p ON c.PositionID = p.PositionDescription " +
+                           "JOIN TBL_Position p ON c.Position = p.PositionDescription " +
                            "WHERE c.CandidateID = @CandidateID";
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -235,21 +232,18 @@ namespace JomaVoting
                         return new Candidate
                         {
                             CandidateID = candidateID,
-                            PositionID = reader["PositionID"].ToString(),
+                            Position = reader["Position"].ToString(),
                             PositionDescription = reader["PositionDescription"].ToString(),
                             FullName = reader["FullName"].ToString()
                         };
                     }
                 }
             }
-            return null; // Return null if candidate not found
+            return null; 
         }
-
-
 
         private void btnVote_Click(object sender, EventArgs e)
         {
-            // Ensure the user is logged in and has their full name retrieved
             string voterFullName = LoginForm.VoterSession.LoggedInVoterFullName;
 
             if (string.IsNullOrEmpty(voterFullName))
@@ -266,17 +260,16 @@ namespace JomaVoting
 
                     foreach (int candidateID in selectedCandidateIDs)
                     {
-                        // Get the full name of the candidate before saving
                         Candidate candidate = GetCandidateDetails(candidateID);
 
                         if (candidate != null)
                         {
+                            // SQL query to insert vote information into TBL_Votes
                             string insertQuery = "INSERT INTO TBL_Votes (Candidate, Voter, Position) " +
                                                  "VALUES (@Candidate, @Voter, @Position)";
 
                             using (SqlCommand command = new SqlCommand(insertQuery, connection))
                             {
-                                // Use the candidate's FullName property
                                 command.Parameters.AddWithValue("@Candidate", candidate.FullName);
                                 command.Parameters.AddWithValue("@Voter", voterFullName);
                                 command.Parameters.AddWithValue("@Position", candidate.PositionDescription);
@@ -299,12 +292,10 @@ namespace JomaVoting
             }
         }
 
-
-
         public class Candidate
         {
             public int CandidateID { get; set; }
-            public string PositionID { get; set; }
+            public string Position { get; set; }
             public string FirstName { get; set; }
             public string MiddleInitial { get; set; }
             public string LastName { get; set; }
@@ -312,8 +303,6 @@ namespace JomaVoting
             public string PositionDescription { get; set; }
             public int MaximumVote { get; set; }  
         }
-
-
     }
 }
 

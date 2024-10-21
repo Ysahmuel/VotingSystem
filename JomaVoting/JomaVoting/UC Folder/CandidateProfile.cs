@@ -19,7 +19,6 @@ namespace JomaVoting.UC_Folder
         public bool IsChecked => checkBox1.Checked;
         public event EventHandler CheckBoxChanged;
 
-
         public CandidateProfile()
         {
             InitializeComponent();
@@ -37,9 +36,9 @@ namespace JomaVoting.UC_Folder
             pictureBox1.Image = GetImageFromDatabase(candidateID);
         }
 
-
         private Image GetImageFromDatabase(int candidateID)
         {
+            // SQL query to retrieve the Picture column from TBL_Candidate for a specific candidateID
             string query = "SELECT Picture FROM [TBL_Candidate] WHERE candidateID = @candidateID";
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -69,25 +68,22 @@ namespace JomaVoting.UC_Folder
             return null;
         }
 
-
-
         public void EnableCheckbox()
         {
-            checkBox1.CheckedChanged += CheckBoxChanged; // Resubscribe the event
-            checkBox1.Enabled = true; // Enable the checkbox
+            checkBox1.CheckedChanged += CheckBoxChanged; 
+            checkBox1.Enabled = true; 
         }
 
         public void DisableCheckbox()
-    {
-        checkBox1.CheckedChanged -= CheckBoxChanged; // Unsubscribe the event
-        checkBox1.Enabled = false; // Disable the checkbox
-    }
+        {
+            checkBox1.CheckedChanged -= CheckBoxChanged; 
+            checkBox1.Enabled = false; 
+        }
 
         public void SetCheckBoxState(bool isChecked)
         {
             checkBox1.Checked = isChecked;
         }
-
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

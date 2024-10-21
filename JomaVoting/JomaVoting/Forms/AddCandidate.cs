@@ -16,11 +16,13 @@ namespace JomaVoting
     {
         private int CandidateID = -1;
         private List<string> allPosition = new List<string>();
+
         public AddCandidate()
         {
             InitializeComponent();
             LoadPosition();
         }
+
         public AddCandidate(int candidateID)
         {
             InitializeComponent();
@@ -36,11 +38,12 @@ namespace JomaVoting
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     connection.Open();
-                    string query = @"
-                SELECT c.FirstName, c.MiddleInitial, c.LastName, p.PositionDescription
-                FROM TBL_Candidate c
-                JOIN TBL_Position p ON c.PositionID = p.PositionDescription 
-                WHERE c.CandidateID = @CandidateID";
+
+                    // SQL query to retrieve candidate's first name, middle initial, last name, and position description by CandidateID
+                    string query = @"SELECT c.FirstName, c.MiddleInitial, c.LastName, p.PositionDescription
+                                    FROM TBL_Candidate c
+                                    JOIN TBL_Position p ON c.Position = p.PositionDescription 
+                                    WHERE c.CandidateID = @CandidateID";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -87,7 +90,6 @@ namespace JomaVoting
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 g.DrawImage(image, 0, 0, width, height);
             }
-
             return resizedImage;
         }
 
@@ -101,7 +103,6 @@ namespace JomaVoting
 
             if (pictureBox1.Image != null)
             {
-      
                 Image resizedImage = ResizeImage(pictureBox1.Image, 50, 50);
 
                 using (MemoryStream ms = new MemoryStream())
@@ -110,8 +111,6 @@ namespace JomaVoting
                     pictureData = ms.ToArray();
                 }
             }
-
-            // Save data to the database
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -121,13 +120,13 @@ namespace JomaVoting
 
                     if (CandidateID == -1)
                     {
-                        // Insert new candidate
-                        query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, PositionID) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @PositionID)";
+                        // SQL query to insert a new candidate into the TBL_Candidate table
+                        query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, Position) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @Position)";
                     }
                     else
                     {
-                        // Update existing candidate
-                        query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, PositionID = @PositionID WHERE CandidateID = @CandidateID";
+                        // SQL query to update an existing candidate's information
+                        query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, Position = @Position WHERE CandidateID = @CandidateID";
                     }
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -135,7 +134,7 @@ namespace JomaVoting
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                         cmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
                         cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@PositionID", positionDescription);
+                        cmd.Parameters.AddWithValue("@Position", positionDescription);
 
                         if (pictureData != null)
                         {
@@ -150,12 +149,9 @@ namespace JomaVoting
                         {
                             cmd.Parameters.AddWithValue("@CandidateID", CandidateID);
                         }
-
-
                         cmd.ExecuteNonQuery();
                     }
                 }
-
                 MessageBox.Show("Candidate data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -167,6 +163,7 @@ namespace JomaVoting
 
         private void LoadPosition()
         {
+            // SQL query to retrieve all position descriptions from the TBL_Position table
             string query = "SELECT PositionDescription FROM TBL_Position";
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
@@ -183,7 +180,6 @@ namespace JomaVoting
                             string positionDescription = reader["PositionDescription"].ToString().Trim();
                             cmbPositionsID.Items.Add(positionDescription);
                         }
-
                         reader.Close();
                     }
                     catch (Exception ex)
@@ -193,7 +189,6 @@ namespace JomaVoting
                 }
             }
         }
-
 
         private void cmbPositionsID_SelectedIndexChanged(object sender, EventArgs e)
         {

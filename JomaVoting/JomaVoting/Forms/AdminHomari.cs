@@ -6,18 +6,15 @@ using System.Drawing;
 namespace JomaVoting
 {
     public partial class AdminHomari : Form
-
     {
-
         public AdminHomari()
         {
-
             InitializeComponent();
         }
 
         private void LoadPage(UserControl page)
         {
-            pnlMain.Controls.Clear(); // Clear the panel
+            pnlMain.Controls.Clear(); 
             page.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(page);
         }

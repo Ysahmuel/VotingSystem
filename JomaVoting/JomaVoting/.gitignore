@@ -1,2 +1,1 @@
-git add .gitignore
-git commit -m "DatabaseConfig.cs"
+JomaVoting/DatabaseConfig.cs

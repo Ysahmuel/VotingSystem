@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,23 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\LoginForm.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\Forms\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\LoginForm.cs [Design]",
-              "RelativeToolTip": "JomaVoting\\Forms\\LoginForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T01:52:46.364Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

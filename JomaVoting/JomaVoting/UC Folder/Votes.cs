@@ -21,14 +21,8 @@ namespace JomaVoting
 
         private void LoadVotesData()
         {
-            string query = @"
-                SELECT 
-                    Position,
-                    Candidate,
-                    Voter
-                FROM 
-                    TBL_Votes;
-                ";
+            // SQL query to retrieve position, candidate, and voter information from TBL_Votes
+            string query = @"SELECT Position, Candidate, Voter FROM TBL_Votes;";
 
             try
             {
@@ -39,7 +33,7 @@ namespace JomaVoting
                     {
                         DataTable votesTable = new DataTable();
                         adapter.Fill(votesTable);
-                        dataGridView1.DataSource = votesTable; // Bind the DataGridView to the data
+                        dataGridView1.DataSource = votesTable;
                     }
                 }
             }

@@ -19,61 +19,62 @@ namespace JomaVoting
         public Dashboard()
         {
             InitializeComponent();
-            DisplayCurrentDateTime();  // Add date and time display logic
-            CreateAndDisplayPlot();    // Existing plot logic
-            UpdateCandidateCount();     // Add candidate count display logic
+            DisplayCurrentDateTime(); 
+            CreateAndDisplayPlot();    
+            UpdateCandidateCount();    
             UpdateVoterCount();
         }
 
         private void UpdateCandidateCount()
         {
             int count = 0;
-            string query = "SELECT COUNT(*) FROM TBL_Candidate"; // Query to count candidates
+            // SQL query to count the total number of candidates in the TBL_Candidate table
+            string query = "SELECT COUNT(*) FROM TBL_Candidate"; 
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     SqlCommand command = new SqlCommand(query, connection);
-                    connection.Open(); // Open the connection
-                    count = (int)command.ExecuteScalar(); // Execute the query
+                    connection.Open();
+                    count = (int)command.ExecuteScalar(); 
                 }
-                lblCandidateCount.Text = count.ToString(); // Update the label
+                lblCandidateCount.Text = count.ToString(); 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error fetching candidate count: {ex.Message}"); // Handle exceptions
+                MessageBox.Show($"Error fetching candidate count: {ex.Message}"); 
             }
         }
+
         private void UpdateVoterCount()
         {
             int count = 0;
-            string query = "SELECT COUNT(*) FROM TBL_Voter"; // Query to count candidates
+            // SQL query to count the total number of voters in the TBL_Voter table
+            string query = "SELECT COUNT(*) FROM TBL_Voter"; 
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     SqlCommand command = new SqlCommand(query, connection);
-                    connection.Open(); // Open the connection
-                    count = (int)command.ExecuteScalar(); // Execute the query
+                    connection.Open(); 
+                    count = (int)command.ExecuteScalar(); 
                 }
-                lblVoterCount.Text = count.ToString(); // Update the label
+                lblVoterCount.Text = count.ToString(); 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error fetching voter count: {ex.Message}"); // Handle exceptions
+                MessageBox.Show($"Error fetching voter count: {ex.Message}");
             }
         }
 
         private void DisplayCurrentDateTime()
         {
             DateTime now = DateTime.Now;
-            // Set the current date in lblDate
             string currentDate = now.ToString("MMMM dd, yyyy");
             lblDate.Text = $"Date: {currentDate}";
 
-            // Set the current time in lblTime
             string currentTime = now.ToString("hh:mm tt");
             lblTime.Text = $"Time: {currentTime}";
         }

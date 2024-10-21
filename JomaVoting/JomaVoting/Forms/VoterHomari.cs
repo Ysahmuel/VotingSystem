@@ -6,7 +6,6 @@ using System.Drawing;
 namespace JomaVoting
 {
     public partial class VoterHomari : Form
-
     {
         private string loggedInUsername;
       
@@ -15,8 +14,8 @@ namespace JomaVoting
             InitializeComponent();
             loggedInUsername = username;
             lblUsername.Text = "Logged in as: " + loggedInUsername;
-
         }
+
         private void LoadPage(UserControl page)
         {
             pnlMain.Controls.Clear(); 

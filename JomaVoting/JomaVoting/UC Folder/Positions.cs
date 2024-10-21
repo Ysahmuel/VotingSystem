@@ -20,9 +20,9 @@ namespace JomaVoting
             AddStatusColumns();
         }
 
-
         private void LoadPositionData()
         {
+            // SQL query to select PositionID, PositionDescription, and MaximumVote from TBL_Position table
             string query = "SELECT PositionID, PositionDescription, MaximumVote FROM TBL_Position";
 
             try
@@ -78,6 +78,7 @@ namespace JomaVoting
             DialogResult result = MessageBox.Show("Are you sure you want to delete this position?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                // SQL query to delete the position record by PositionID
                 string query = "DELETE FROM TBL_Position WHERE PositionID = @PositionID";
 
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))

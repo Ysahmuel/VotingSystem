@@ -29,8 +29,7 @@ namespace JomaVoting
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     connection.Open();
-
-                    // Check if the username and password match
+                    // SQL query to check if the username and password match
                     string query = "SELECT COUNT(*) FROM TBL_Voter WHERE Username=@Username AND Password=@Password";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -42,7 +41,7 @@ namespace JomaVoting
 
                         if (count == 1)
                         {
-                            // Retrieve the full name of the voter
+                            // SQL query to retrieve the full name of the voter
                             string fullNameQuery = "SELECT CONCAT(FirstName, ' ', MiddleInitial, '. ', LastName) AS FullName FROM TBL_Voter WHERE Username=@Username";
 
                             using (SqlCommand fullNameCommand = new SqlCommand(fullNameQuery, connection))
@@ -53,10 +52,8 @@ namespace JomaVoting
 
                                 if (!string.IsNullOrEmpty(fullName))
                                 {
-                                    // Set the logged-in voter's full name in the session
                                     VoterSession.LoggedInVoterFullName = fullName;
 
-                                    // Proceed to show the main form
                                     this.Hide();
                                     VoterHomari mainForm = new VoterHomari(username);
                                     mainForm.FormClosed += (s, args) => this.Close();
@@ -81,6 +78,7 @@ namespace JomaVoting
                 MessageBox.Show("Error during login: " + ex.Message);
             }
         }
+
         public static class VoterSession
         {
             public static string LoggedInVoterFullName { get; set; }
