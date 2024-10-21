@@ -215,88 +215,91 @@ namespace JomaVoting
             }
         }
 
-        private CandidateProfile GetCandidateProfileControl(int candidateID)
-        {
-            return candidateProfiles.FirstOrDefault(profile => profile.CandidateID == candidateID);
-        }
-
         private Candidate GetCandidateDetails(int candidateID)
         {
-            string query = "SELECT c.PositionID, CONCAT(c.FirstName, ' ', c.MiddleInitial, ' ', c.LastName) AS FullName, p.PositionDescription " +
+            string query = "SELECT c.PositionID, p.PositionDescription, CONCAT(c.FirstName, ' ', c.MiddleInitial, ' ', c.LastName) AS FullName " +
                            "FROM TBL_Candidate c " +
-                           "LEFT JOIN TBL_Position p ON c.PositionID = p.PositionDescription " + 
+                           "JOIN TBL_Position p ON c.PositionID = p.PositionDescription " +
                            "WHERE c.CandidateID = @CandidateID";
 
             using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@CandidateID", candidateID);
-                    connection.Open();
+                command.Parameters.AddWithValue("@CandidateID", candidateID);
+                connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        if (reader.Read())
+                        return new Candidate
                         {
-                            return new Candidate
-                            {
-                                CandidateID = candidateID,
-                                FullName = reader["FullName"].ToString(),
-                                PositionID = reader["PositionID"].ToString(),
-                                PositionDescription = reader["PositionDescription"].ToString()
-                            };
-                        }
+                            CandidateID = candidateID,
+                            PositionID = reader["PositionID"].ToString(),
+                            PositionDescription = reader["PositionDescription"].ToString(),
+                            FullName = reader["FullName"].ToString()
+                        };
                     }
                 }
             }
-            return null; 
+            return null; // Return null if candidate not found
         }
 
-
-        private void SaveVotes(List<int> candidateIDs)
-        {
-            string insertQuery = "INSERT INTO TBL_Votes (Position, Candidate, Voter) VALUES (@Position, @Candidate, @Voter)";
-
-            using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-            {
-                try
-                {
-                    connection.Open();
-
-                    string voterFullName = GetVoterFullName(); 
-
-                    foreach (int candidateID in candidateIDs)
-                    {
-                        Candidate candidate = GetCandidateDetails(candidateID); 
-
-                        using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                        {
-                            command.Parameters.AddWithValue("@Position", candidate.PositionDescription);
-                            command.Parameters.AddWithValue("@Candidate", candidate.FullName);      
-                            command.Parameters.AddWithValue("@Voter", voterFullName);             
-                            command.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Votes successfully saved!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error saving votes: " + ex.Message);
-                }
-            }
-        }
 
 
         private void btnVote_Click(object sender, EventArgs e)
         {
-            SaveVotes(selectedCandidateIDs); 
+            // Ensure the user is logged in and has their full name retrieved
+            string voterFullName = LoginForm.VoterSession.LoggedInVoterFullName;
+
+            if (string.IsNullOrEmpty(voterFullName))
+            {
+                MessageBox.Show("Voter information is missing. Please log in again.");
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                {
+                    connection.Open();
+
+                    foreach (int candidateID in selectedCandidateIDs)
+                    {
+                        // Get the full name of the candidate before saving
+                        Candidate candidate = GetCandidateDetails(candidateID);
+
+                        if (candidate != null)
+                        {
+                            string insertQuery = "INSERT INTO TBL_Votes (Candidate, Voter, Position) " +
+                                                 "VALUES (@Candidate, @Voter, @Position)";
+
+                            using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                            {
+                                // Use the candidate's FullName property
+                                command.Parameters.AddWithValue("@Candidate", candidate.FullName);
+                                command.Parameters.AddWithValue("@Voter", voterFullName);
+                                command.Parameters.AddWithValue("@Position", candidate.PositionDescription);
+
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Candidate with ID {candidateID} not found.");
+                        }
+                    }
+
+                    MessageBox.Show("Votes saved successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while saving votes: " + ex.Message);
+            }
         }
 
-        private string GetVoterFullName()
-        {
-            return "John Joe Bingoball"; 
-        }
+
 
         public class Candidate
         {

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static JomaVoting.Voting;
 
 namespace JomaVoting
 {
@@ -26,26 +27,47 @@ namespace JomaVoting
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(*) FROM TBL_User WHERE username=@username AND password=@password";
+
+                    // Check if the username and password match
+                    string query = "SELECT COUNT(*) FROM TBL_Voter WHERE Username=@Username AND Password=@Password";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password);
 
                         int count = Convert.ToInt32(command.ExecuteScalar());
 
                         if (count == 1)
                         {
-                            this.Hide();
+                            // Retrieve the full name of the voter
+                            string fullNameQuery = "SELECT CONCAT(FirstName, ' ', MiddleInitial, '. ', LastName) AS FullName FROM TBL_Voter WHERE Username=@Username";
 
-                            VoterHomari mainForm = new VoterHomari(username);
-                            mainForm.FormClosed += (s, args) => this.Close();
-                            mainForm.Show();
-                            MessageBox.Show("Login successful!");
+                            using (SqlCommand fullNameCommand = new SqlCommand(fullNameQuery, connection))
+                            {
+                                fullNameCommand.Parameters.AddWithValue("@Username", username);
+
+                                string fullName = fullNameCommand.ExecuteScalar()?.ToString();
+
+                                if (!string.IsNullOrEmpty(fullName))
+                                {
+                                    // Set the logged-in voter's full name in the session
+                                    VoterSession.LoggedInVoterFullName = fullName;
+
+                                    // Proceed to show the main form
+                                    this.Hide();
+                                    VoterHomari mainForm = new VoterHomari(username);
+                                    mainForm.FormClosed += (s, args) => this.Close();
+                                    mainForm.Show();
+                                    MessageBox.Show("Login successful!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error retrieving voter's full name.");
+                                }
+                            }
                         }
                         else
                         {
@@ -53,12 +75,16 @@ namespace JomaVoting
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error during login: " + ex.Message);
             }
         }
+        public static class VoterSession
+        {
+            public static string LoggedInVoterFullName { get; set; }
+        }
     }
-}
+ }
+

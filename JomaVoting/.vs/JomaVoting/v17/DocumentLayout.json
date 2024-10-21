@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\uc folder\\positions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\uc folder\\positions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\uc folder\\candidates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\uc folder\\candidates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\forms\\voterhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\forms\\voterhomari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|c:\\users\\rosa\\onedrive\\documents\\github\\votingsystem\\jomavoting\\jomavoting\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89022991-493B-4EED-8C0D-6DD4037F329A}|JomaVoting\\JomaVoting.csproj|solutionrelative:jomavoting\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,41 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Positions.cs",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Positions.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\UC Folder\\Positions.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Positions.cs",
-              "RelativeToolTip": "JomaVoting\\UC Folder\\Positions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAiAAAAAAAAAA==",
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "JomaVoting\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "JomaVoting\\Forms\\LoginForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T13:50:16.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VoterHomari.cs",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\VoterHomari.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\Forms\\VoterHomari.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\Forms\\VoterHomari.cs",
-              "RelativeToolTip": "JomaVoting\\Forms\\VoterHomari.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T13:48:31.479Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Candidates.cs",
-              "DocumentMoniker": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Candidates.cs",
-              "RelativeDocumentMoniker": "JomaVoting\\UC Folder\\Candidates.cs",
-              "ToolTip": "C:\\Users\\ROSA\\OneDrive\\Documents\\GitHub\\VotingSystem\\JomaVoting\\JomaVoting\\UC Folder\\Candidates.cs",
-              "RelativeToolTip": "JomaVoting\\UC Folder\\Candidates.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCIAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T13:34:50.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T01:52:46.364Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

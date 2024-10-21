@@ -14,11 +14,11 @@ namespace JomaVoting
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            AdminHomari formari = new AdminHomari();
-            VoterHomari vormari = new VoterHomari();
-
-            Application.Run(vormari);
-            Application.Run(formari);
+           
+            LoginForm loginform = new LoginForm();
+            AdminHomari homari = new AdminHomari();
+            Application.Run(loginform);
+            Application.Run(homari);
         }
     }
 }

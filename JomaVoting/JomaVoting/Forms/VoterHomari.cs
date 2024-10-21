@@ -8,20 +8,18 @@ namespace JomaVoting
     public partial class VoterHomari : Form
 
     {
-
-        public VoterHomari()
-        {
-
-            InitializeComponent();
-        }
+        private string loggedInUsername;
+      
         public VoterHomari(string username)
         {
             InitializeComponent();
-            
+            loggedInUsername = username;
+            lblUsername.Text = "Logged in as: " + loggedInUsername;
+
         }
         private void LoadPage(UserControl page)
         {
-            pnlMain.Controls.Clear(); // Clear the panel
+            pnlMain.Controls.Clear(); 
             page.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(page);
         }

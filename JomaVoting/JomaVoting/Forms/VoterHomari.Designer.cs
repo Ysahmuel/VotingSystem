@@ -37,10 +37,12 @@
             btnPartyList = new Button();
             btnHome = new Button();
             panel3 = new Panel();
+            lblUsername = new Label();
             pnlMain = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -52,7 +54,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1257, 52);
+            panel1.Size = new Size(1000, 56);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -87,10 +89,10 @@
             panel2.Controls.Add(btnHome);
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 52);
+            panel2.Location = new Point(0, 56);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 721);
+            panel2.Size = new Size(200, 717);
             panel2.TabIndex = 2;
             // 
             // btnExit
@@ -99,7 +101,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = SystemColors.ControlText;
-            btnExit.Location = new Point(0, 679);
+            btnExit.Location = new Point(0, 675);
             btnExit.Margin = new Padding(3, 4, 3, 4);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(200, 42);
@@ -114,7 +116,7 @@
             btnVoting.FlatStyle = FlatStyle.Flat;
             btnVoting.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVoting.ForeColor = SystemColors.ControlText;
-            btnVoting.Location = new Point(0, 158);
+            btnVoting.Location = new Point(0, 150);
             btnVoting.Margin = new Padding(3, 4, 3, 4);
             btnVoting.Name = "btnVoting";
             btnVoting.Size = new Size(200, 60);
@@ -130,7 +132,7 @@
             btnPartyList.FlatStyle = FlatStyle.Flat;
             btnPartyList.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPartyList.ForeColor = SystemColors.ControlText;
-            btnPartyList.Location = new Point(0, 98);
+            btnPartyList.Location = new Point(0, 90);
             btnPartyList.Margin = new Padding(3, 4, 3, 4);
             btnPartyList.Name = "btnPartyList";
             btnPartyList.Size = new Size(200, 60);
@@ -146,7 +148,7 @@
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHome.ForeColor = SystemColors.ControlText;
-            btnHome.Location = new Point(0, 38);
+            btnHome.Location = new Point(0, 30);
             btnHome.Margin = new Padding(3, 4, 3, 4);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(200, 60);
@@ -157,12 +159,23 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(lblUsername);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 38);
+            panel3.Size = new Size(200, 30);
             panel3.TabIndex = 1;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsername.Location = new Point(0, 4);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(78, 16);
+            lblUsername.TabIndex = 0;
+            lblUsername.Text = "lblUsername";
             // 
             // pnlMain
             // 
@@ -170,27 +183,28 @@
             pnlMain.AutoScrollMargin = new Size(0, 200);
             pnlMain.BackColor = SystemColors.ButtonHighlight;
             pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(200, 52);
+            pnlMain.Location = new Point(200, 56);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1057, 721);
+            pnlMain.Size = new Size(800, 717);
             pnlMain.TabIndex = 3;
             // 
             // VoterHomari
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1257, 773);
+            ClientSize = new Size(1000, 773);
             Controls.Add(pnlMain);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "VoterHomari";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -206,5 +220,6 @@
         private Panel panel3;
         private PictureBox pictureBox1;
         private Label label1;
+        private Label lblUsername;
     }
 }
