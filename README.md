@@ -3,10 +3,9 @@
 ## JomaREAD
 
 * Need to Work On
-  
-  -USER INTERFACE(maybe)
-  -Home User (what should put?)
-  -Home PartyList(not working yet)
+  - USER INTERFACE(maybe)
+  - Home User (what should put?)
+  - Home PartyList(not working yet)
 
 Voting system for Advanced Database System
 
