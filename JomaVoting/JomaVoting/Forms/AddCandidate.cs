@@ -9,69 +9,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using JomaVoting.Repositories;
 
 namespace JomaVoting
 {
     public partial class AddCandidate : Form
     {
+
+        public delegate void CandidateAddedEventHandler();
+        public event CandidateAddedEventHandler CandidateAdded;
+
         private int CandidateID = -1;
-        private List<string> allPosition = new List<string>();
+        private CandidateRepository candidateRepository;
 
         public AddCandidate()
         {
             InitializeComponent();
-            LoadPosition();
+            candidateRepository = new CandidateRepository(DatabaseConfig.ConnectionString);
+            LoadPositionAsync();
         }
 
-        public AddCandidate(int candidateID)
+        public AddCandidate(int candidateID) : this()
         {
-            InitializeComponent();
             CandidateID = candidateID;
-            LoadPosition();
-            LoadCandidateData();
+            LoadCandidateDataAsync();
         }
 
-        private void LoadCandidateData()
+        private async void LoadCandidateDataAsync()
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                // Load candidate data using candidateRepository
+                DataTable candidateData = await candidateRepository.GetCandidatesAsync();
+                foreach (DataRow row in candidateData.Rows)
                 {
-                    connection.Open();
-
-                    // SQL query to retrieve candidate's first name, middle initial, last name, and position description by CandidateID
-                    string query = @"SELECT c.FirstName, c.MiddleInitial, c.LastName, p.PositionDescription
-                                    FROM TBL_Candidate c
-                                    JOIN TBL_Position p ON c.Position = p.PositionDescription 
-                                    WHERE c.CandidateID = @CandidateID";
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    if ((int)row["CandidateID"] == CandidateID)
                     {
-                        cmd.Parameters.AddWithValue("@CandidateID", CandidateID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        txtFirstName.Text = row["FirstName"].ToString();
+                        txtMiddleInitial.Text = row["MiddleInitial"].ToString();
+                        txtLastName.Text = row["LastName"].ToString();
+                        if (row["Picture"] != DBNull.Value)
                         {
-                            if (reader.Read())
+                            byte[] pictureData = (byte[])row["Picture"];
+                            using (MemoryStream ms = new MemoryStream(pictureData))
                             {
-                                txtFirstName.Text = reader["FirstName"].ToString();
-                                txtMiddleInitial.Text = reader["MiddleInitial"].ToString();
-                                txtLastName.Text = reader["LastName"].ToString();
-
-                                string positionDescription = reader["PositionDescription"].ToString().Trim();
-
-                                if (cmbPositionsID.Items.Contains(positionDescription))
-                                {
-                                    cmbPositionsID.SelectedItem = positionDescription;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Position description not found in the list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Candidate not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                pictureBox1.Image = Image.FromStream(ms);
                             }
                         }
+                        cmbPositionsID.SelectedItem = row["Position"].ToString();
+                        break;
                     }
                 }
             }
@@ -93,66 +79,27 @@ namespace JomaVoting
             return resizedImage;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
-            string firstName = txtFirstName.Text;
-            string middleInitial = txtMiddleInitial.Text;
-            string lastName = txtLastName.Text;
+            string firstName = txtFirstName.Text.Trim();
+            string middleInitial = txtMiddleInitial.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
             string positionDescription = cmbPositionsID.SelectedItem?.ToString();
-            byte[] pictureData = null;
 
-            if (pictureBox1.Image != null)
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(positionDescription))
             {
-                Image resizedImage = ResizeImage(pictureBox1.Image, 50, 50);
-
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    resizedImage.Save(ms, ImageFormat.Png); 
-                    pictureData = ms.ToArray();
-                }
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            byte[] pictureData = GetPictureData();
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-                {
-                    connection.Open();
-                    string query;
-
-                    if (CandidateID == -1)
-                    {
-                        // SQL query to insert a new candidate into the TBL_Candidate table
-                        query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, Position) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @Position)";
-                    }
-                    else
-                    {
-                        // SQL query to update an existing candidate's information
-                        query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, Position = @Position WHERE CandidateID = @CandidateID";
-                    }
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@FirstName", firstName);
-                        cmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
-                        cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@Position", positionDescription);
-
-                        if (pictureData != null)
-                        {
-                            cmd.Parameters.AddWithValue("@Picture", pictureData);
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@Picture", DBNull.Value); 
-                        }
-
-                        if (CandidateID != -1)
-                        {
-                            cmd.Parameters.AddWithValue("@CandidateID", CandidateID);
-                        }
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                await candidateRepository.SaveCandidateAsync(CandidateID, firstName, middleInitial, lastName, pictureData, positionDescription);
                 MessageBox.Show("Candidate data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CandidateAdded?.Invoke();
+
                 this.Close();
             }
             catch (Exception ex)
@@ -161,47 +108,42 @@ namespace JomaVoting
             }
         }
 
-        private void LoadPosition()
+        private async void LoadPositionAsync()
         {
-            // SQL query to retrieve all position descriptions from the TBL_Position table
-            string query = "SELECT PositionDescription FROM TBL_Position";
-
-            using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
 
-                        while (reader.Read())
-                        {
-                            string positionDescription = reader["PositionDescription"].ToString().Trim();
-                            cmbPositionsID.Items.Add(positionDescription);
-                        }
-                        reader.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error loading positions: " + ex.Message);
-                    }
-                }
+                var positions = await candidateRepository.GetPositionsAsync();
+                cmbPositionsID.DataSource = positions;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void cmbPositionsID_SelectedIndexChanged(object sender, EventArgs e)
+        private byte[] GetPictureData()
         {
-
+            if (pictureBox1.Image != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    return ms.ToArray();
+                }
+            }
+            return null; 
         }
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png) | *.jpg; *.jpeg; *.gif; *.bmp; *.png";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                }
             }
         }
     }

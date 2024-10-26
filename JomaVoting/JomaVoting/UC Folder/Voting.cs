@@ -20,6 +20,7 @@ namespace JomaVoting
         private Dictionary<string, int> positionSelectedCounts = new Dictionary<string, int>();
         private Dictionary<string, int> positionMaxVotes = new Dictionary<string, int>();
         private List<CandidateProfile> candidateProfiles = new List<CandidateProfile>();
+        private Dictionary<int, Candidate> candidateCache = new Dictionary<int, Candidate>();
 
         public Voting()
         {
@@ -210,9 +211,13 @@ namespace JomaVoting
                 }
             }
         }
-
         private Candidate GetCandidateDetails(int candidateID)
         {
+            if (candidateCache.TryGetValue(candidateID, out var cachedCandidate))
+            {
+                return cachedCandidate;
+            }
+
             // SQL query to retrieve detailed candidate information by CandidateID
             string query = "SELECT c.Position, p.PositionDescription, CONCAT(c.FirstName, ' ', c.MiddleInitial, ' ', c.LastName) AS FullName " +
                            "FROM TBL_Candidate c " +
@@ -229,17 +234,19 @@ namespace JomaVoting
                 {
                     if (reader.Read())
                     {
-                        return new Candidate
+                        var candidate = new Candidate
                         {
                             CandidateID = candidateID,
                             Position = reader["Position"].ToString(),
                             PositionDescription = reader["PositionDescription"].ToString(),
                             FullName = reader["FullName"].ToString()
                         };
+                        candidateCache[candidateID] = candidate; // Cache the candidate
+                        return candidate;
                     }
                 }
             }
-            return null; 
+            return null;
         }
 
         private void btnVote_Click(object sender, EventArgs e)

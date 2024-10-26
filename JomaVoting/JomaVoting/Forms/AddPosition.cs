@@ -8,55 +8,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JomaVoting.Repositories;
 
 namespace JomaVoting
 {
     public partial class AddPosition : Form
     {
+        public delegate void PositionAddedEventHandler();
+        public event PositionAddedEventHandler PositionAdded;
+
         private int PositionID = -1;
+        private PositionRepository _positionRepository;
+
         public AddPosition()
         {
             InitializeComponent();
-        }
-        public AddPosition(int positionID)
-        {
-            InitializeComponent();
-            PositionID = positionID;
-            LoadPositionData(); 
+            _positionRepository = new PositionRepository(DatabaseConfig.ConnectionString);
         }
 
-        private void LoadPositionData()
+        public AddPosition(int positionID) : this()
+        {
+            PositionID = positionID;
+            LoadPositionDataAsync();
+        }
+
+        private async void LoadPositionDataAsync()
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                var positionData = await _positionRepository.GetPositionsAsync();
+                var positionRow = positionData.Select($"PositionID = {PositionID}");
+
+                if (positionRow.Length > 0)
                 {
-                    connection.Open();
-                    // SQL query to retrieve the PositionDescription and MaximumVote for a specific PositionID
-                    string query = "SELECT PositionDescription, MaximumVote FROM TBL_Position WHERE PositionID = @PositionID";
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    txtPosition.Text = positionRow[0]["PositionDescription"].ToString();
+                    int maxVote = Convert.ToInt32(positionRow[0]["MaximumVote"]);
+
+                    foreach (var item in cmbMaximumVote.Items)
                     {
-                        cmd.Parameters.AddWithValue("@PositionID", PositionID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        if (Convert.ToInt32(item) == maxVote)
                         {
-                            if (reader.Read())
-                            {
-                                txtPosition.Text = reader["PositionDescription"].ToString();
-                           
-                                int maxVote = Convert.ToInt32(reader["MaximumVote"]);
-
-                                bool valueFound = false;
-
-                                foreach (var item in cmbMaximumVote.Items)
-                                {
-                                    if (Convert.ToInt32(item) == maxVote)
-                                    {
-                                        cmbMaximumVote.SelectedItem = item;
-                                        valueFound = true;
-                                        break;
-                                    }
-                                }
-                             }
+                            cmbMaximumVote.SelectedItem = item;
+                            break;
                         }
                     }
                 }
@@ -67,47 +60,26 @@ namespace JomaVoting
             }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
-            string positionDescription = txtPosition.Text;
+            string positionDescription = txtPosition.Text.Trim();
             string maximumVote = cmbMaximumVote.Text;
+
+            if (string.IsNullOrWhiteSpace(positionDescription))
+            {
+                MessageBox.Show("Position description cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString)) 
-                {
-                    connection.Open();
-                    string query;
-
-                    if (PositionID == -1)
-                    {
-                        // SQL query to insert a new position into the TBL_Position table
-                        query = "INSERT INTO TBL_Position (PositionDescription, MaximumVote) " +
-                                "VALUES (@PositionDescription, @MaximumVote)";
-                    }
-                    else
-                    {
-                        // SQL query to update an existing position's information
-                        query = "UPDATE TBL_Position SET PositionDescription = @PositionDescription, MaximumVote = @MaximumVote WHERE PositionID = @PositionID";
-                    }
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@PositionDescription", positionDescription);
-                        cmd.Parameters.AddWithValue("@MaximumVote", maximumVote);
-
-                        if (PositionID != -1)
-                        {
-                            cmd.Parameters.AddWithValue("@PositionID", PositionID);
-                        }
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                await _positionRepository.SavePositionAsync(positionDescription, maximumVote, PositionID);
                 MessageBox.Show("Position data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // Raise the PositionAdded event after successful save
+                PositionAdded?.Invoke();
+
                 txtPosition.Clear();
-         
                 this.Close();
             }
             catch (Exception ex)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using JomaVoting.Repositories;
 
 
 
@@ -15,42 +16,34 @@ namespace JomaVoting
 {
     public partial class AddVoter : Form
     {
+        public delegate void VoterAddedEventHandler();
+        public event VoterAddedEventHandler VoterAdded;
+
         private int VoterID = -1;
+        private readonly VoterRepository _voterRepository;
 
         public AddVoter()
         {
             InitializeComponent();
+            _voterRepository = new VoterRepository(DatabaseConfig.ConnectionString);
         }
 
-        public AddVoter(int voterID)
+        public AddVoter(int voterID) : this()
         {
-            InitializeComponent();
             VoterID = voterID;
-            LoadVoterData(); 
+            LoadVoterDataAsync();
         }
 
-        private void LoadVoterData()
+        private async void LoadVoterDataAsync()
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                var voter = await _voterRepository.GetVoterAsync(VoterID);
+                if (voter != null)
                 {
-                    connection.Open();
-                    // SQL query to retrieve the voter's FirstName, MiddleInitial, and LastName using VoterID
-                    string query = "SELECT FirstName, MiddleInitial, LastName FROM TBL_Voter WHERE VoterID = @VoterID";
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@VoterID", VoterID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                txtFirstName.Text = reader["FirstName"].ToString();
-                                txtMiddleInitial.Text = reader["MiddleInitial"].ToString();
-                                txtLastName.Text = reader["LastName"].ToString();
-                            }
-                        }
-                    }
+                    txtFirstName.Text = voter.FirstName;
+                    txtMiddleInitial.Text = voter.MiddleInitial;
+                    txtLastName.Text = voter.LastName;
                 }
             }
             catch (Exception ex)
@@ -59,78 +52,32 @@ namespace JomaVoting
             }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
             string firstName = txtFirstName.Text;
             string middleInitial = txtMiddleInitial.Text;
             string lastName = txtLastName.Text;
 
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            {
+                MessageBox.Show("First Name and Last Name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var voter = new Voter
+            {
+                VoterID = VoterID,
+                FirstName = firstName,
+                MiddleInitial = middleInitial,
+                LastName = lastName
+            };
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-                {
-                    connection.Open();
-                    string query;
-                    string username = "";
-                    string password = GeneratePassword(); 
-
-                    if (VoterID == -1)
-                    {
-                        // SQL query to insert a new voter and capture the inserted VoterID
-                        query = "INSERT INTO TBL_Voter (FirstName, MiddleInitial, LastName, Username, Password) " +
-                                "OUTPUT INSERTED.VoterID " +  // Capture the VoterID of the newly inserted record
-                                "VALUES (@FirstName, @MiddleInitial, @LastName, @Username, @Password)";
-
-                        // Create a temporary username for insertion
-                        username = $"{firstName}{lastName}TEMP";
-                    }
-                    else
-                    {
-                        // SQL query to update an existing voter's information
-                        query = "UPDATE TBL_Voter SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, " +
-                                "LastName = @LastName, Username = @Username, Password = @Password " +
-                                "WHERE VoterID = @VoterID";
-
-                        // Create the username using FirstName, LastName, and VoterID (since it exists)
-                        username = $"{firstName}{lastName}{VoterID}";
-                    }
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@FirstName", firstName);
-                        cmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
-                        cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@Username", username);  
-                        cmd.Parameters.AddWithValue("@Password", password); 
-
-                        if (VoterID == -1)
-                        {
-                            VoterID = (int)cmd.ExecuteScalar(); 
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@VoterID", VoterID);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    if (VoterID != -1 && username.Contains("TEMP"))
-                    {
-                        username = $"{firstName}{lastName}{VoterID}";
-                        query = "UPDATE TBL_Voter SET Username = @Username WHERE VoterID = @VoterID";
-                        using (SqlCommand updateCmd = new SqlCommand(query, connection))
-                        {
-                            updateCmd.Parameters.AddWithValue("@Username", username);
-                            updateCmd.Parameters.AddWithValue("@VoterID", VoterID);
-                            updateCmd.ExecuteNonQuery();
-                        }
-                    }
-                }
+                VoterID = await _voterRepository.SaveVoterAsync(voter);
                 MessageBox.Show("Voter data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                txtFirstName.Clear();
-                txtMiddleInitial.Clear();
-                txtLastName.Clear();
-
+                VoterAdded?.Invoke();
                 this.Close();
             }
             catch (Exception ex)

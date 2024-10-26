@@ -21,21 +21,27 @@ namespace JomaVoting
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUserName.Text;
-            string password = txtPassword.Text;
+            string username = txtUserName.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
                 {
                     connection.Open();
-                    // SQL query to check if the username and password match
+                    // SQL query to check if the username and password match (use hashed password)
                     string query = "SELECT COUNT(*) FROM TBL_Voter WHERE Username=@Username AND Password=@Password";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@Password", password);
+                        command.Parameters.AddWithValue("@Password", password); 
 
                         int count = Convert.ToInt32(command.ExecuteScalar());
 
@@ -75,9 +81,10 @@ namespace JomaVoting
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during login: " + ex.Message);
+                MessageBox.Show("An error occurred during login. Please try again later.");
             }
         }
+
 
         public static class VoterSession
         {

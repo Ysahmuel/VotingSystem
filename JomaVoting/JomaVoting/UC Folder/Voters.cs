@@ -8,43 +8,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JomaVoting.Repositories;
 
 namespace JomaVoting
 {
     public partial class Voters : UserControl
     {
-        private object ex;
+        private readonly VoterRepository _voterRepository;
 
         public Voters()
         {
             InitializeComponent();
-            LoadVotersData();
-            AddStatusColumns();
+            _voterRepository = new VoterRepository(DatabaseConfig.ConnectionString);
+            LoadVotersDataAsync();
         }
 
         private void btnAddVoter_Click(object sender, EventArgs e)
         {
             AddVoter addVoter = new AddVoter();
+            addVoter.VoterAdded += AddVoter_VoterAdded;
             addVoter.Show();
         }
-
-        private void LoadVotersData()
+        private void AddVoter_VoterAdded() // Event handler to refresh data
         {
-            // SQL query to select all necessary voter details (ID, FirstName, MiddleInitial, LastName, Section)
-            string query = "SELECT VoterID, FirstName, MiddleInitial, LastName, Section FROM TBL_Voter";
+            LoadVotersDataAsync();
+        }
 
+        private async void LoadVotersDataAsync()
+        {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-                {
-                    connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    {
-                        DataTable voterTable = new DataTable();
-                        adapter.Fill(voterTable);
-                        dataGridView1.DataSource = voterTable;
-                    }
-                }
+                var voters = await _voterRepository.GetAllVotersAsync();
+                dataGridView1.DataSource = voters;
+                AddStatusColumns();
             }
             catch (Exception ex)
             {
@@ -54,79 +50,68 @@ namespace JomaVoting
 
         private void AddStatusColumns()
         {
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
+
+            if (!dataGridView1.Columns.Contains("Edit"))
             {
-                Name = "Edit",
-                HeaderText = "Edit",
-                Text = "Edit",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(editColumn);
-
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
-            {
-                Name = "Delete",
-                HeaderText = "Delete",
-                Text = "Delete",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(deleteColumn);
-        }
-
-        private void DeleteVoter(int rowIndex)
-        {
-            int voterID = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["VoterID"].Value);
-
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this voter?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                // SQL query to delete the voter record by VoterID
-                string query = "DELETE FROM TBL_Voter WHERE VoterID = @VoterID";
-
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@VoterID", voterID);
+                    Name = "Edit",
+                    HeaderText = "Edit",
+                    Text = "Edit",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(editColumn);
+            }
 
-                        try
-                        {
-                            connection.Open();
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                LoadVotersData();
-                                dataGridView1.Invalidate();
-                                MessageBox.Show("Voter deleted successfully.");
-          
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error deleting voter: " + ex.Message);
-                        }
-                    }
-                }
+            if (!dataGridView1.Columns.Contains("Delete"))
+            {
+                DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "Delete",
+                    Text = "Delete",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(deleteColumn);
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private async void DeleteVoter(int rowIndex)
+    {
+        int voterID = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["VoterID"].Value);
+
+        DialogResult result = MessageBox.Show("Are you sure you want to delete this voter?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        if (result == DialogResult.Yes)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+            try
             {
-                int voterID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["VoterID"].Value);
-
-                AddVoter addVoterForm = new AddVoter(voterID);
-                addVoterForm.ShowDialog(); 
-                LoadVotersData(); 
+                await _voterRepository.DeleteVoterAsync(voterID);
+                LoadVotersDataAsync(); 
+                MessageBox.Show("Voter deleted successfully.");
             }
-            else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            catch (Exception ex)
             {
-                DeleteVoter(e.RowIndex);
+                MessageBox.Show("Error deleting voter: " + ex.Message);
             }
         }
+    }
+
+    private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+        if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+        {
+                int voterID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["VoterID"].Value);
+                var addVoterForm = new AddVoter(voterID);
+                addVoterForm.VoterAdded += AddVoter_VoterAdded;
+                addVoterForm.ShowDialog(); 
+        }
+        else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+        {
+            DeleteVoter(e.RowIndex);
+        }
+    }
     }
 }

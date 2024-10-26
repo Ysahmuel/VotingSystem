@@ -8,41 +8,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JomaVoting.Repositories;
 
 namespace JomaVoting
 {
     public partial class Candidates : UserControl
     {
+        private CandidateRepository candidateRepository;
+
         public Candidates()
         {
             InitializeComponent();
-            LoadCandidateData();
-            AddStatusColumns();
+            candidateRepository = new CandidateRepository(DatabaseConfig.ConnectionString);
+            LoadCandidateDataAsync();
+           
         }
 
         private void btnAddCandidate_Click(object sender, EventArgs e)
         {
             AddCandidate addCandidate = new AddCandidate();
+            addCandidate.CandidateAdded += AddCandidate_CandidateAdded;
             addCandidate.Show();
         }
-
-        private void LoadCandidateData()
+        private void AddCandidate_CandidateAdded() 
         {
-            // SQL query to select candidate data from the TBL_Candidate table
-            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Picture, Section, Position FROM TBL_Candidate";
+            LoadCandidateDataAsync();
+        }
 
+        private async void LoadCandidateDataAsync()
+        {
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-                {
-                    connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    {
-                        DataTable candidateTable = new DataTable();
-                        adapter.Fill(candidateTable);
-                        dataGridView1.DataSource = candidateTable; 
-                    }
-                }
+                var candidateTable = await candidateRepository.GetCandidatesAsync();
+                dataGridView1.DataSource = candidateTable;
+                AddStatusColumns();
             }
             catch (Exception ex)
             {
@@ -52,58 +51,47 @@ namespace JomaVoting
 
         private void AddStatusColumns()
         {
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
+            if (!dataGridView1.Columns.Contains("Edit"))
             {
-                Name = "Edit",
-                HeaderText = "Edit",
-                Text = "Edit",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(editColumn);
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
+                {
+                    Name = "Edit",
+                    HeaderText = "Edit",
+                    Text = "Edit",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(editColumn);
+            }
 
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+            if (!dataGridView1.Columns.Contains("Delete"))
             {
-                Name = "Delete",
-                HeaderText = "Delete",
-                Text = "Delete",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(deleteColumn);
+                DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "Delete",
+                    Text = "Delete",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(deleteColumn);
+            }
         }
 
-        private void DeleteCandidate(int rowIndex)
+        private async void DeleteCandidate(int rowIndex)
         {
             int candidateID = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["CandidateID"].Value);
 
             DialogResult result = MessageBox.Show("Are you sure you want to delete this candidate?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // SQL query to delete the candidate with the specified CandidateID from the TBL_Candidate table
-                string query = "DELETE FROM TBL_Candidate WHERE CandidateID = @CandidateID";
-
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                try
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@CandidateID", candidateID);
-
-                        try
-                        {
-                            connection.Open();
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                LoadCandidateData();
-                                dataGridView1.Invalidate();
-                                MessageBox.Show("Candidate deleted successfully.");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error deleting candidate: " + ex.Message);
-                        }
-                    }
+                    await candidateRepository.DeleteCandidateAsync(candidateID);
+                    LoadCandidateDataAsync();
+                    MessageBox.Show("Candidate deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting candidate: " + ex.Message);
                 }
             }
         }
@@ -115,15 +103,15 @@ namespace JomaVoting
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int candidateID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CandidateID"].Value);
-
                 AddCandidate addCandidateForm = new AddCandidate(candidateID);
-                addCandidateForm.ShowDialog(); 
-                LoadCandidateData(); 
+                addCandidateForm.ShowDialog();
+                LoadCandidateDataAsync();
             }
             else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
                 DeleteCandidate(e.RowIndex);
             }
         }
+
     }
 }

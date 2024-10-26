@@ -8,35 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JomaVoting.Repositories;
 
 namespace JomaVoting
 {
     public partial class Positions : UserControl
     {
+        private PositionRepository _positionRepository;
+
         public Positions()
         {
             InitializeComponent();
-            LoadPositionData();
-            AddStatusColumns();
+            _positionRepository = new PositionRepository(DatabaseConfig.ConnectionString);
+            LoadPositionDataAsync();
         }
 
-        private void LoadPositionData()
+        private async void LoadPositionDataAsync()
         {
-            // SQL query to select PositionID, PositionDescription, and MaximumVote from TBL_Position table
-            string query = "SELECT PositionID, PositionDescription, MaximumVote FROM TBL_Position";
-
             try
             {
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-                {
-                    connection.Open();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    {
-                        DataTable positionTable = new DataTable();
-                        adapter.Fill(positionTable);
-                        dataGridView1.DataSource = positionTable; 
-                    }
-                }
+                var positionTable = await _positionRepository.GetPositionsAsync();
+                dataGridView1.DataSource = positionTable;
+                AddStatusColumns(); 
             }
             catch (Exception ex)
             {
@@ -47,64 +40,60 @@ namespace JomaVoting
         private void btnAddPosition_Click(object sender, EventArgs e)
         {
             AddPosition addPosition = new AddPosition();
-            addPosition.Show();
+            addPosition.PositionAdded += AddPosition_PositionAdded; // Subscribe to the event
+            addPosition.ShowDialog();
+        }
+
+        private void AddPosition_PositionAdded() // Event handler to refresh data
+        {
+            LoadPositionDataAsync();
         }
 
         private void AddStatusColumns()
         {
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
+            // Check if the Edit column already exists
+            if (!dataGridView1.Columns.Contains("Edit"))
             {
-                Name = "Edit",
-                HeaderText = "Edit",
-                Text = "Edit",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(editColumn);
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn
+                {
+                    Name = "Edit",
+                    HeaderText = "Edit",
+                    Text = "Edit",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(editColumn);
+            }
 
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+            // Check if the Delete column already exists
+            if (!dataGridView1.Columns.Contains("Delete"))
             {
-                Name = "Delete",
-                HeaderText = "Delete",
-                Text = "Delete",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(deleteColumn);
+                DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "Delete",
+                    Text = "Delete",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridView1.Columns.Add(deleteColumn);
+            }
         }
 
-        private void DeletePosition(int rowIndex)
+        private async void DeletePosition(int rowIndex)
         {
             int positionID = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["PositionID"].Value);
-
             DialogResult result = MessageBox.Show("Are you sure you want to delete this position?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
-                // SQL query to delete the position record by PositionID
-                string query = "DELETE FROM TBL_Position WHERE PositionID = @PositionID";
-
-                using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                try
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@PositionID", positionID);
-
-                        try
-                        {
-                            connection.Open();
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                LoadPositionData();
-                                dataGridView1.Invalidate();
-                                MessageBox.Show("Position deleted successfully.");
-
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error deleting position: " + ex.Message);
-                        }
-                    }
+                    await _positionRepository.DeletePositionAsync(positionID);
+                    LoadPositionDataAsync();
+                    MessageBox.Show("Position deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting position: " + ex.Message);
                 }
             }
         }
@@ -116,10 +105,9 @@ namespace JomaVoting
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int positionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["PositionID"].Value);
-
                 AddPosition addPositionForm = new AddPosition(positionID);
-                addPositionForm.ShowDialog(); 
-                LoadPositionData(); 
+                addPositionForm.PositionAdded += AddPosition_PositionAdded; // Subscribe to refresh event
+                addPositionForm.ShowDialog();
             }
             else if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
             {
