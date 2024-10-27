@@ -71,11 +71,22 @@ namespace JomaVoting
                 MiddleInitial = middleInitial,
                 LastName = lastName
             };
-
             try
             {
+                // Save voter to database and get the assigned VoterID
                 VoterID = await _voterRepository.SaveVoterAsync(voter);
-                MessageBox.Show("Voter data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Update the VoterID in the voter object
+                voter.VoterID = VoterID;
+
+                // Generate username and password
+                voter.Username = $"{firstName}{lastName}{VoterID}";
+                voter.Password = GeneratePassword();
+
+                // Save the username and password in the database
+                await _voterRepository.UpdateVoterCredentialsAsync(voter);
+
+                MessageBox.Show($"Voter data saved successfully!\nUsername: {voter.Username}\nPassword: {voter.Password}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 VoterAdded?.Invoke();
                 this.Close();

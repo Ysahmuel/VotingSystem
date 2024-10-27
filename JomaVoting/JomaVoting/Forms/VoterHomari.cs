@@ -28,7 +28,7 @@ namespace JomaVoting
 
         private void btnPartyList_Click(object sender, EventArgs e)
         {
-            LoadPage(new JomaVoting.Party());
+            LoadPage(new JomaVoting.PartyList());
         }
 
         private void btnVoting_Click(object sender, EventArgs e)

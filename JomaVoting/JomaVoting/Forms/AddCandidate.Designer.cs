@@ -43,6 +43,8 @@
             btnCancel = new Button();
             pictureBox1 = new PictureBox();
             btnInsertImage = new Button();
+            cmbPartyListName = new ComboBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label4.Location = new Point(234, 249);
+            label4.Location = new Point(239, 311);
             label4.Name = "label4";
             label4.Size = new Size(105, 25);
             label4.TabIndex = 11;
@@ -110,7 +112,7 @@
             // cmbPositionsID
             // 
             cmbPositionsID.FormattingEnabled = true;
-            cmbPositionsID.Location = new Point(235, 279);
+            cmbPositionsID.Location = new Point(239, 339);
             cmbPositionsID.Name = "cmbPositionsID";
             cmbPositionsID.Size = new Size(276, 28);
             cmbPositionsID.TabIndex = 15;
@@ -123,7 +125,7 @@
             btnSubmit.FlatStyle = FlatStyle.Flat;
             btnSubmit.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSubmit.ForeColor = Color.White;
-            btnSubmit.Location = new Point(400, 335);
+            btnSubmit.Location = new Point(404, 395);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(112, 47);
             btnSubmit.TabIndex = 16;
@@ -134,7 +136,7 @@
             // cmbSection
             // 
             cmbSection.FormattingEnabled = true;
-            cmbSection.Location = new Point(235, 200);
+            cmbSection.Location = new Point(239, 195);
             cmbSection.Name = "cmbSection";
             cmbSection.Size = new Size(275, 28);
             cmbSection.TabIndex = 18;
@@ -143,7 +145,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label5.Location = new Point(231, 167);
+            label5.Location = new Point(235, 162);
             label5.Name = "label5";
             label5.Size = new Size(80, 25);
             label5.TabIndex = 17;
@@ -168,7 +170,7 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = Color.Black;
-            btnCancel.Location = new Point(281, 335);
+            btnCancel.Location = new Point(285, 395);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(112, 47);
             btnCancel.TabIndex = 20;
@@ -196,12 +198,32 @@
             btnInsertImage.UseVisualStyleBackColor = true;
             btnInsertImage.Click += btnInsertImage_Click;
             // 
+            // cmbPartyListName
+            // 
+            cmbPartyListName.FormattingEnabled = true;
+            cmbPartyListName.Location = new Point(239, 269);
+            cmbPartyListName.Name = "cmbPartyListName";
+            cmbPartyListName.Size = new Size(275, 28);
+            cmbPartyListName.TabIndex = 23;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label7.Location = new Point(235, 236);
+            label7.Name = "label7";
+            label7.Size = new Size(96, 25);
+            label7.TabIndex = 22;
+            label7.Text = "Party List:";
+            // 
             // AddCandidate
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(526, 411);
+            ClientSize = new Size(526, 475);
+            Controls.Add(cmbPartyListName);
+            Controls.Add(label7);
             Controls.Add(btnInsertImage);
             Controls.Add(pictureBox1);
             Controls.Add(btnCancel);
@@ -241,5 +263,7 @@
         private Button btnCancel;
         private PictureBox pictureBox1;
         private Button btnInsertImage;
+        private ComboBox cmbPartyListName;
+        private Label label7;
     }
 }

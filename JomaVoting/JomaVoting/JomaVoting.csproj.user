@@ -31,7 +31,7 @@
     <Compile Update="UC Folder\Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UC Folder\Party.cs">
+    <Compile Update="UC Folder\PartyList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UC Folder\Positions.cs">

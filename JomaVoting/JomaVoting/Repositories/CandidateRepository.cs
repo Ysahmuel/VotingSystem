@@ -5,22 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static JomaVoting.Voting;
 
 namespace JomaVoting.Repositories
 {
     public class CandidateRepository
     {
-        private string connectionString;
+        private readonly string _connectionString;
 
         public CandidateRepository(string connectionString)
         {
-            this.connectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public async Task<DataTable> GetCandidatesAsync()
         {
-            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Picture, Position FROM TBL_Candidate";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string query = "SELECT CandidateID, FirstName, MiddleInitial, LastName, Picture, Position, PartyList FROM TBL_Candidate";
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
@@ -35,7 +36,7 @@ namespace JomaVoting.Repositories
         {
             List<string> positions = new List<string>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
 
@@ -53,46 +54,80 @@ namespace JomaVoting.Repositories
             return positions;
         }
 
+        public async Task<List<string>> GetPartyListAsync()
+        {
+            List<string> partylist = new List<string>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                string query = "SELECT PartyListName FROM TBL_PartyList";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        partylist.Add(reader["PartyListName"].ToString());
+                    }
+                }
+            }
+
+            return partylist;
+        }
+
 
         public async Task DeleteCandidateAsync(int candidateID)
         {
             string query = "DELETE FROM TBL_Candidate WHERE CandidateID = @CandidateID";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@CandidateID", candidateID);
+                    cmd.Parameters.AddWithValue("@CandidateID", candidateID);
                     await connection.OpenAsync();
-                    await command.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public async Task SaveCandidateAsync(int? candidateID, string firstName, string middleInitial, string lastName, byte[] picture, string position)
+        public async Task SaveCandidateAsync(string firstName, string middleInitial, string lastName, byte[] picture, string position, string partyList, string section = null, int candidateID = -1)
         {
-            string query = candidateID.HasValue
-                ? "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, Position = @Position WHERE CandidateID = @CandidateID"
-                : "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, Position) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @Position)";
+            string query;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@FirstName", firstName);
-                    command.Parameters.AddWithValue("@MiddleInitial", middleInitial);
-                    command.Parameters.AddWithValue("@LastName", lastName);
-                    command.Parameters.AddWithValue("@Position", position);
-                    command.Parameters.AddWithValue("@Picture", picture ?? (object)DBNull.Value);
+                await connection.OpenAsync();
 
-                    if (candidateID.HasValue)
+                if (candidateID == -1)
+                {
+                    query = "INSERT INTO TBL_Candidate (FirstName, MiddleInitial, LastName, Picture, Position, Section, PartyList) VALUES (@FirstName, @MiddleInitial, @LastName, @Picture, @Position, @Section, @PartyList)";
+                }
+                else
+                {
+                    query = "UPDATE TBL_Candidate SET FirstName = @FirstName, MiddleInitial = @MiddleInitial, LastName = @LastName, Picture = @Picture, Position = @Position, Section = @Section, PartyList = @PartyList WHERE CandidateID = @CandidateID";
+                }
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@FirstName", firstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", lastName);
+                    cmd.Parameters.AddWithValue("@Position", position);
+                    cmd.Parameters.AddWithValue("@PartyList", partyList);
+                    cmd.Parameters.AddWithValue("@Picture", picture ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Section", section ?? (object)DBNull.Value);
+                    
+
+                    if (candidateID != -1)
                     {
-                        command.Parameters.AddWithValue("@CandidateID", candidateID.Value);
+                        cmd.Parameters.AddWithValue("@CandidateID", candidateID);
                     }
 
-                    await connection.OpenAsync();
-                    await command.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
+
+
     }
 }

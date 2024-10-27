@@ -24,7 +24,6 @@ C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\D
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\JomaVoting.pdb
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Home.resources
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Party.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.Voting.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.csproj.GenerateResource.cache
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.GeneratedMSBuildEditorConfig.editorconfig
@@ -312,3 +311,4 @@ C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\D
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.LoginForm.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.PartyList.resources

@@ -109,6 +109,24 @@ namespace JomaVoting.Repositories
                 }
             }
         }
+        public async Task UpdateVoterCredentialsAsync(Voter voter)
+        {
+            string query = "UPDATE TBL_Voter SET Username = @Username, Password = @Password WHERE VoterID = @VoterID";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", voter.Username);
+                    command.Parameters.AddWithValue("@Password", voter.Password);
+                    command.Parameters.AddWithValue("@VoterID", voter.VoterID);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
 
         public async Task DeleteVoterAsync(int voterID)
         {
@@ -131,7 +149,10 @@ namespace JomaVoting.Repositories
         public string FirstName { get; set; }
         public string MiddleInitial { get; set; }
         public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
+
 }
 
 

@@ -27,6 +27,7 @@ namespace JomaVoting
             InitializeComponent();
             candidateRepository = new CandidateRepository(DatabaseConfig.ConnectionString);
             LoadPositionAsync();
+            LoadPartyListAsync();
         }
 
         public AddCandidate(int candidateID) : this()
@@ -57,6 +58,7 @@ namespace JomaVoting
                             }
                         }
                         cmbPositionsID.SelectedItem = row["Position"].ToString();
+                        cmbPartyListName.SelectedItem = row["PartyList"].ToString();
                         break;
                     }
                 }
@@ -64,6 +66,75 @@ namespace JomaVoting
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while loading candidate data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private async void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string firstName = txtFirstName.Text.Trim();
+            string middleInitial = txtMiddleInitial.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
+            string positionDescription = cmbPositionsID.SelectedItem?.ToString();
+            string partylist = cmbPartyListName.SelectedItem?.ToString();
+            byte[] pictureData = null;
+
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(positionDescription) || string.IsNullOrWhiteSpace(partylist))
+            {
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (pictureBox1.Image != null)
+            {
+                Image resizedImage = ResizeImage(pictureBox1.Image, 50, 50);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    resizedImage.Save(ms, ImageFormat.Png);
+                    pictureData = ms.ToArray();
+                }
+            }
+
+            try
+            {
+                // Pass the CandidateID when saving
+                await candidateRepository.SaveCandidateAsync(firstName, middleInitial, lastName, pictureData, positionDescription, partylist, candidateID: CandidateID);
+                MessageBox.Show("Candidate data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CandidateAdded?.Invoke();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while saving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void LoadPartyListAsync()
+        {
+            try
+            {
+                var partylist = await candidateRepository.GetPartyListAsync();
+                cmbPartyListName.DataSource = partylist;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading party list names: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void LoadPositionAsync()
+        {
+            try
+            {
+                var positions = await candidateRepository.GetPositionsAsync();
+                cmbPositionsID.DataSource = positions;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,71 +150,14 @@ namespace JomaVoting
             return resizedImage;
         }
 
-        private async void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string firstName = txtFirstName.Text.Trim();
-            string middleInitial = txtMiddleInitial.Text.Trim();
-            string lastName = txtLastName.Text.Trim();
-            string positionDescription = cmbPositionsID.SelectedItem?.ToString();
-
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(positionDescription))
-            {
-                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            byte[] pictureData = GetPictureData();
-
-            try
-            {
-                await candidateRepository.SaveCandidateAsync(CandidateID, firstName, middleInitial, lastName, pictureData, positionDescription);
-                MessageBox.Show("Candidate data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CandidateAdded?.Invoke();
-
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while saving the data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private async void LoadPositionAsync()
-        {
-            try
-            {
-
-                var positions = await candidateRepository.GetPositionsAsync();
-                cmbPositionsID.DataSource = positions;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while loading positions: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private byte[] GetPictureData()
-        {
-            if (pictureBox1.Image != null)
-            {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    return ms.ToArray();
-                }
-            }
-            return null; 
-        }
 
         private void btnInsertImage_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png) | *.jpg; *.jpeg; *.gif; *.bmp; *.png";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-                }
+                pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
             }
         }
     }
