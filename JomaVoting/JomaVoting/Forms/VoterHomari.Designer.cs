@@ -199,6 +199,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "VoterHomari";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "JomaVote - Voter";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

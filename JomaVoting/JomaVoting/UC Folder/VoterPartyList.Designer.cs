@@ -1,6 +1,6 @@
 ﻿namespace JomaVoting
 {
-    partial class PartyList
+    partial class VoterPartyList
     {
         /// <summary> 
         /// Required designer variable.

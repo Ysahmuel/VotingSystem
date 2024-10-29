@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JomaVoting.Repositories;
+using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
@@ -12,12 +13,14 @@ using static JomaVoting.Voting;
 
 namespace JomaVoting
 {
-    public partial class PartyList : UserControl
+    public partial class VoterPartyList : UserControl
     {
+        private PartyListRepository partylistRepository;
 
-        public PartyList()
+        public VoterPartyList()
         {
             InitializeComponent();
+            partylistRepository = new PartyListRepository(DatabaseConfig.ConnectionString);
             LoadPartyListAndCandidates();
         }
 
@@ -25,7 +28,7 @@ namespace JomaVoting
         {
             try
             {
-                List<PartyCandidate> partyCandidates = await GetPartyCandidatesAsync();
+                List<PartyListRepository.PartyCandidate> partyCandidates = await partylistRepository.GetPartyCandidatesAsync();
                 DisplayPartyCandidates(partyCandidates);
             }
             catch (Exception ex)
@@ -34,48 +37,8 @@ namespace JomaVoting
             }
         }
 
-        private async Task<List<PartyCandidate>> GetPartyCandidatesAsync()
-        {
-            List<PartyCandidate> partyCandidates = new List<PartyCandidate>();
-
-            string query = @"
-                SELECT 
-                    P.PartyListName,
-                    C.FirstName,
-                    C.MiddleInitial,
-                    C.LastName,
-                    C.Position
-                FROM 
-                    TBL_PartyList P
-                INNER JOIN 
-                    TBL_Candidate C ON P.PartyListName = C.PartyList
-                ORDER BY 
-                    P.PartyListName, C.Position, C.LastName"; 
-
-            using (SqlConnection connection = new SqlConnection(DatabaseConfig.ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    await connection.OpenAsync();
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            partyCandidates.Add(new PartyCandidate
-                            {
-                                PartyListName = reader["PartyListName"].ToString(),
-                                CandidateName = $"{reader["FirstName"]} {reader["MiddleInitial"]}. {reader["LastName"]}",
-                                Position = reader["Position"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-
-            return partyCandidates;
-        }
-
-        private void DisplayPartyCandidates(List<PartyCandidate> partyCandidates)
+     
+        private void DisplayPartyCandidates(List<PartyListRepository.PartyCandidate> partyCandidates)
         {
             flowLayoutPanel1.Controls.Clear(); // Clear existing controls
 
@@ -134,15 +97,6 @@ namespace JomaVoting
             {
                 MessageBox.Show("No panels were added to panelPartyList.");
             }
-        }
-
-
-
-        public class PartyCandidate
-        {
-            public string PartyListName { get; set; }
-            public string CandidateName { get; set; }
-            public string Position { get; set; }
         }
     }
 }

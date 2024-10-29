@@ -12,7 +12,7 @@ namespace JomaVoting
 
         private void LoadPage(UserControl page)
         {
-            pnlMain.Controls.Clear(); 
+            pnlMain.Controls.Clear();
             page.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(page);
         }
@@ -42,16 +42,6 @@ namespace JomaVoting
             LoadPage(new JomaVoting.Candidates());
         }
 
-        private void formsPlot1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadPage(new JomaVoting.Dashboard());
@@ -60,6 +50,11 @@ namespace JomaVoting
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPartyList_Click(object sender, EventArgs e)
+        {
+            LoadPage(new JomaVoting.AdminPartyList());
         }
     }
 }

@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\AddPartyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UC Folder\AdminPartyList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\AddCandidate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -31,7 +37,7 @@
     <Compile Update="UC Folder\Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UC Folder\PartyList.cs">
+    <Compile Update="UC Folder\VoterPartyList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UC Folder\Positions.cs">

@@ -40,14 +40,11 @@
             btnVoters = new Button();
             btnVotes = new Button();
             btnDashboard = new Button();
-            panel3 = new Panel();
-            pictureBox2 = new PictureBox();
             pnlMain = new Panel();
+            btnPartyList = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -114,18 +111,18 @@
             // panel2
             // 
             panel2.BackColor = Color.AliceBlue;
+            panel2.Controls.Add(btnPartyList);
             panel2.Controls.Add(btnCandidates);
             panel2.Controls.Add(btnPositions);
             panel2.Controls.Add(btnExit);
             panel2.Controls.Add(btnVoters);
             panel2.Controls.Add(btnVotes);
             panel2.Controls.Add(btnDashboard);
-            panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 52);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 721);
+            panel2.Size = new Size(192, 721);
             panel2.TabIndex = 2;
             // 
             // btnCandidates
@@ -140,7 +137,7 @@
             btnCandidates.Location = new Point(0, 240);
             btnCandidates.Margin = new Padding(3, 4, 3, 4);
             btnCandidates.Name = "btnCandidates";
-            btnCandidates.Size = new Size(200, 60);
+            btnCandidates.Size = new Size(192, 60);
             btnCandidates.TabIndex = 6;
             btnCandidates.Text = " Candidates";
             btnCandidates.TextAlign = ContentAlignment.MiddleLeft;
@@ -160,7 +157,7 @@
             btnPositions.Location = new Point(0, 180);
             btnPositions.Margin = new Padding(3, 4, 3, 4);
             btnPositions.Name = "btnPositions";
-            btnPositions.Size = new Size(200, 60);
+            btnPositions.Size = new Size(192, 60);
             btnPositions.TabIndex = 5;
             btnPositions.Text = " Positions";
             btnPositions.TextAlign = ContentAlignment.MiddleLeft;
@@ -180,7 +177,7 @@
             btnExit.Location = new Point(0, 664);
             btnExit.Margin = new Padding(3, 4, 3, 4);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(200, 57);
+            btnExit.Size = new Size(192, 57);
             btnExit.TabIndex = 4;
             btnExit.Text = " Exit";
             btnExit.TextAlign = ContentAlignment.MiddleLeft;
@@ -200,7 +197,7 @@
             btnVoters.Location = new Point(0, 120);
             btnVoters.Margin = new Padding(3, 4, 3, 4);
             btnVoters.Name = "btnVoters";
-            btnVoters.Size = new Size(200, 60);
+            btnVoters.Size = new Size(192, 60);
             btnVoters.TabIndex = 3;
             btnVoters.Text = " Voter";
             btnVoters.TextAlign = ContentAlignment.MiddleLeft;
@@ -220,7 +217,7 @@
             btnVotes.Location = new Point(0, 60);
             btnVotes.Margin = new Padding(3, 4, 3, 4);
             btnVotes.Name = "btnVotes";
-            btnVotes.Size = new Size(200, 60);
+            btnVotes.Size = new Size(192, 60);
             btnVotes.TabIndex = 2;
             btnVotes.Text = " Votes";
             btnVotes.TextAlign = ContentAlignment.MiddleLeft;
@@ -240,7 +237,7 @@
             btnDashboard.Location = new Point(0, 0);
             btnDashboard.Margin = new Padding(3, 4, 3, 4);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(200, 60);
+            btnDashboard.Size = new Size(192, 60);
             btnDashboard.TabIndex = 0;
             btnDashboard.Text = " Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -248,35 +245,34 @@
             btnDashboard.UseVisualStyleBackColor = true;
             btnDashboard.Click += btnDashboard_Click;
             // 
-            // panel3
-            // 
-            panel3.Controls.Add(pictureBox2);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(200, 721);
-            panel3.TabIndex = 1;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.dashboard;
-            pictureBox2.Location = new Point(0, 8);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(41, 44);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
             // pnlMain
             // 
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            pnlMain.Location = new Point(200, 52);
+            pnlMain.Location = new Point(192, 52);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1057, 721);
+            pnlMain.Size = new Size(1065, 721);
             pnlMain.TabIndex = 3;
-            pnlMain.Paint += pnlMain_Paint;
+
+            // 
+            // btnPartyList
+            // 
+            btnPartyList.Dock = DockStyle.Top;
+            btnPartyList.FlatAppearance.BorderSize = 0;
+            btnPartyList.FlatStyle = FlatStyle.Flat;
+            btnPartyList.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPartyList.ForeColor = SystemColors.ControlText;
+            btnPartyList.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPartyList.Location = new Point(0, 300);
+            btnPartyList.Margin = new Padding(3, 4, 3, 4);
+            btnPartyList.Name = "btnPartyList";
+            btnPartyList.Size = new Size(192, 60);
+            btnPartyList.TabIndex = 7;
+            btnPartyList.Text = "Party List";
+            btnPartyList.TextAlign = ContentAlignment.MiddleLeft;
+            btnPartyList.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnPartyList.UseVisualStyleBackColor = true;
+            btnPartyList.Click += btnPartyList_Click;
             // 
             // AdminHomari
             // 
@@ -295,8 +291,6 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -309,13 +303,12 @@
         private Button btnVoters;
         private Button btnVotes;
         private Button btnDashboard;
-        private Panel panel3;
         private Panel pnlMain;
         private Button btnCandidates;
         private Button btnPositions;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private TextBox txtSearch;
         private Button btnSearch;
+        private Button btnPartyList;
     }
 }

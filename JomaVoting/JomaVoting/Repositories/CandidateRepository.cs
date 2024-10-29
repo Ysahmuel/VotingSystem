@@ -127,7 +127,5 @@ namespace JomaVoting.Repositories
                 }
             }
         }
-
-
     }
 }

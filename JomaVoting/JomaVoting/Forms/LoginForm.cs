@@ -41,7 +41,7 @@ namespace JomaVoting
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@Password", password); 
+                        command.Parameters.AddWithValue("@Password", password);
 
                         int count = Convert.ToInt32(command.ExecuteScalar());
 
@@ -90,6 +90,11 @@ namespace JomaVoting
         {
             public static string LoggedInVoterFullName { get; set; }
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
- }
+}
 

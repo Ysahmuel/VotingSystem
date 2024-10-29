@@ -311,4 +311,6 @@ C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\D
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.LoginForm.resources
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
 C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
-C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.PartyList.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AdminPartyList.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.VoterPartyList.resources
+C:\Users\ROSA\OneDrive\Documents\GitHub\VotingSystem\JomaVoting\JomaVoting\obj\Debug\net8.0-windows\JomaVoting.AddPartyList.resources
